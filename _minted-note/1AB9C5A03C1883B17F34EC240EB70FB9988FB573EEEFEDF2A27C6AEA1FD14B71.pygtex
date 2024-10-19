@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{customer\PYGZus{}copy1}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{customer\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{store\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{first\PYGZus{}name}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{last\PYGZus{}name}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{email}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{address\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{k}{active}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{create\PYGZus{}date}\PYG{p}{,}
+\PYG{+w}{                                   }\PYG{n}{last\PYGZus{}update}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{customer\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{store\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{first\PYGZus{}name}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{last\PYGZus{}name}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{email}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{address\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{               }\PYG{k}{active}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{create\PYGZus{}date}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{last\PYGZus{}update}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{customer}\PYG{p}{;}
+\end{Verbatim}

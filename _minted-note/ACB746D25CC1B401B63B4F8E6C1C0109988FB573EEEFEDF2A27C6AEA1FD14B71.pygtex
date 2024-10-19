@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{last\PYGZus{}name}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{customer}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{k}{REGEXP}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZca{}ERI.\PYGZdl{}\PYGZsq{}}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SHOW}\PYG{+w}{ }\PYG{k}{STATUS}\PYG{n}{；}\PYG{+w}{                }\PYG{c+c1}{\PYGZsh{}用于显示广泛的服务器状态信息；}
+\PYG{+w}{        }\PYG{k}{SHOW}\PYG{+w}{ }\PYG{k}{GRANTS}\PYG{n}{；}\PYG{+w}{                }\PYG{c+c1}{\PYGZsh{}用来显示授予用户（所有用户或特定用户）的安全权限；}
+\PYG{+w}{        }\PYG{k}{SHOW}\PYG{+w}{ }\PYG{n}{ERRORS和SHOW}\PYG{+w}{ }\PYG{k}{WARNINGS}\PYG{n}{；}\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{}用来显示服务器错误或警告消息。}
+\end{Verbatim}

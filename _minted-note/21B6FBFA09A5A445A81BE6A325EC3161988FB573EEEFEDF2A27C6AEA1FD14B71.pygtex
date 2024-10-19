@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{DISTINCT}\PYG{+w}{ }\PYG{n}{r1}\PYG{p}{.}\PYG{n}{customer\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{rental}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{r1}\PYG{p}{,}\PYG{n}{rental}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{r2}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{r1}\PYG{p}{.}\PYG{n}{inventory\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{r2}\PYG{p}{.}\PYG{n}{inventory\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{AND}\PYG{+w}{ }\PYG{n}{r2}\PYG{p}{.}\PYG{n}{customer\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{577}
+\PYG{+w}{        }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{r1}\PYG{p}{.}\PYG{n}{customer\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\end{Verbatim}

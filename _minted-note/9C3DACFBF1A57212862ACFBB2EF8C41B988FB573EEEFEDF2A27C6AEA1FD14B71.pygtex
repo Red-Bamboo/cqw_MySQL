@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{actor\PYGZus{}id}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{actor\PYGZus{}info}\PYG{+w}{ }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{9}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{;}
+\end{Verbatim}

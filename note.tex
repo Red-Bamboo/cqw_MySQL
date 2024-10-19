@@ -1,0 +1,3550 @@
+\documentclass[UTF8]{article}
+\usepackage{mathtools,amsmath,graphicx,array}
+% 加载中文环境
+\usepackage[fontset=fandol]{ctex}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{minted}% 语法高亮和代码样式设置方面更加强大和灵活
+\usepackage{algorithm}
+\usepackage{float}
+\usepackage{booktabs}%提供命令\toprule、\midrule、\bottomrule
+\usepackage[hidelinks]{hyperref}
+\usepackage{amssymb} % 斜体支持
+\usepackage{mdframed} % 创建带边框的区域
+\usepackage{xcolor} % 颜色支持
+% 定义橙盒子
+\newmdenv[
+    backgroundcolor=orange!10,
+    linecolor=orange!30,
+    linewidth=1pt,
+    roundcorner=5pt,
+    frametitlebackgroundcolor=orange!20,
+    frametitlefont=\normalfont\bfseries,
+    frametitlealignment=\raggedright
+]{orangebox}
+%定义红盒子
+\newmdenv[
+    backgroundcolor=red!10, % 正文背景颜色
+    linecolor=red!30, % 边框线颜色
+    linewidth=1pt, % 边框线的粗细
+    roundcorner=5pt, % 圆角半径
+    frametitlebackgroundcolor=red!20, % 标题背景颜色
+    frametitlefont=\normalfont\bfseries, % 标题字体设置
+    frametitlealignment=\raggedright % 标题居中
+]{redbox}
+% 设置页面的环境，a4纸张大小，适当调整边距
+\usepackage[a4paper,left=10mm,right=10mm,top=15mm,bottom=15mm]{geometry}
+\title{\Huge \textbf{MySQL 必知必会}}  % 主标题加大字体
+\author{Red Bamboo}
+\date{fall 2024}
+
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+    \vspace*{2cm}  % 调整标题与页面顶端的距离，使其更居中
+
+    % 主标题
+    \Huge
+    \textbf{MySQL 必知必会}
+    
+    \vspace{10cm}  % 增大标题和作者部分之间的空白，保持整体平衡感
+
+    % 作者信息
+    \Large
+    \LaTeX \ by Red Bamboo\\
+    Jilin University
+    
+    \vspace{0.5cm}  % 保持适当的垂直空白
+    
+    % 日期
+    fall 2024
+    
+    \end{center}
+\end{titlepage}
+
+\newpage %另起一页
+\tableofcontents
+\newpage
+
+\section{数据库基础}
+\begin{redbox}[frametitle={Defination 1}]
+\begin{enumerate}
+	\item \textbf{数据库（database）} 保存有组织的数据的容器（通常是一个文
+    件或一组文件）
+	\item \textbf{表（table）} 某种特定类型数据的结构化清单。
+	\item \textbf{模式（schema）} 关于数据库和表的布局及特性的信息。
+	\item \textbf{列（column）} 表中的一个字段。所有表都是由一个或多个列组
+    成的。
+    \item \textbf{数据类型（datatype）} 所容许的数据的类型。每个表列都有相
+    应的数据类型，它限制（或容许）该列中存储的数据。
+    \item \textbf{行（row）} 表中的一个记录。
+    \item \textbf{主键（primary key）}一列（或一组列），其值能够唯一区分表
+    中每个行。
+\end{enumerate}
+    
+\end{redbox}
+\section{连接MySQL}
+
+在操作系统命令提示符下输入mysql，可以输入以下指令：
+\begin{listing}[htb]
+	\caption{连接mysql}
+	\label{code:connectmysql}
+\begin{minted}{mysql}
+        mysql -u hzz -p
+\end{minted}
+\end{listing}
+
+然后在接下来的对话框中输入密码即可，输入密码完成后会返回如下：
+
+\begin{listing}[htb]
+	\caption{连接mysql后的回复}
+	\label{code:respondforconnectmysql}
+	\begin{minted}{mysql}
+        Welcome to the MySQL monitor.  Commands end with ; or \g.
+        Your MySQL connection id is 38
+        Server version: 8.0.39 MySQL Community Server - GPL
+        Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+        \end{minted}
+\end{listing}
+
+\section{使用MySQL}
+
+\subsection{选择数据库}
+
+首先需要创建一个数据库：
+\begin{listing}[H]
+	\caption{创建数据库}
+	\label{code:createdatabase}
+	\begin{minted}{mysql}
+        create crashcourse;
+        \end{minted}
+\end{listing}
+
+然后调用这个数据库：
+
+\begin{listing}[H]
+	\caption{调用数据库}
+	\label{code:usedatabase}
+	\begin{minted}{mysql}
+        use sakila;
+\end{minted}
+\end{listing}
+
+若使用成功会返回：
+
+\begin{listing}[H]
+	\caption{调用数据库返回值}
+	\label{code:respondforusedatabase}
+	\begin{minted}{mysql}
+        Database changed
+\end{minted}
+\end{listing}
+
+\subsection{展示数据和表}
+
+展示数据库可以用如下命令：
+
+\begin{listing}[H]
+	\caption{显示数据库}
+	\label{code:showdatabase}
+	\begin{minted}{mysql}
+        show databases;
+\end{minted}
+\end{listing}
+
+
+此时会返回可用数据库的一个列表：
+
+\begin{listing}[H]
+	\caption{数据库列表}
+	\label{code:databaselist}
+	\begin{minted}{mysql}
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | crashcourse        |
+        | demo               |
+        | information_schema |
+        | mysql              |
+        | performance_schema |
+        | sakila             |
+        | sys                |
+        | world              |
+        +--------------------+
+        8 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+查看一个数据库中的表可以用如下命令：
+
+\begin{listing}[H]
+	\caption{显示数据库}
+	\label{code:showtable}
+	\begin{minted}{mysql}
+        show tables;
+\end{minted}
+\end{listing}
+
+此时会返回可用表的一个列表：
+
+\begin{listing}[H]
+	\caption{表列表}
+	\label{code:tablelist}
+	\begin{minted}{mysql}
+        +----------------------------+
+        | Tables_in_sakila           |
+        +----------------------------+
+        | actor                      |
+        | actor_info                 |
+        | address                    |
+        | category                   |
+        | city                       |
+        | country                    |
+        | customer                   |
+        | customer_list              |
+        | film                       |
+        | film_actor                 |
+        | film_category              |
+        | film_list                  |
+        | film_text                  |
+        | inventory                  |
+        | language                   |
+        | nicer_but_slower_film_list |
+        | payment                    |
+        | rental                     |
+        | sales_by_film_category     |
+        | sales_by_store             |
+        | staff                      |
+        | staff_list                 |
+        | store                      |
+        +----------------------------+
+        23 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+SHOW也可以用来显示表列：
+
+\begin{listing}[H]
+	\caption{显示列}
+	\label{code:showcolumn}
+	\begin{minted}{mysql}
+        show columns from actor;
+\end{minted}
+\end{listing}
+
+此时会返回可用列的一个列表：
+
+\begin{listing}[H]
+	\caption{表列}
+	\label{code:columnlist}
+	\begin{minted}{mysql}
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| Field       | Type              | Null | Key | Default           | Extra                                         |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| actor_id    | smallint unsigned | NO   | PRI | NULL              | auto_increment                                |
+| first_name  | varchar(45)       | NO   |     | NULL              |                                               |
+| last_name   | varchar(45)       | NO   | MUL | NULL              |                                               |
+| last_update | timestamp         | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+4 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+注意，describe与show columns是等价命令，也就是如下命令也可以返回上面的结果：
+\begin{listing}[H]
+	\caption{describe}
+	\label{code:describe等价命令}
+	\begin{minted}{mysql}
+        describe actor;
+\end{minted}
+\end{listing}
+
+show 还有其他语句：
+\begin{listing}[H]
+	\caption{show的其他语句}
+	\label{code:show的其他语句}
+	\begin{minted}{mysql}
+        show status；                    #用于显示广泛的服务器状态信息；
+        show grants；                    #用来显示授予用户（所有用户或特定用户）的安全权限；
+        show errors；                    #用来显示服务器错误消息。
+        show warnings；                  #用来显示服务器警告消息。
+\end{minted}
+\end{listing}
+
+\section{检索数据}
+\subsection{检索单个列}
+首先是先检索表的单列：
+\begin{listing}[H]
+	\caption{select单列}
+	\label{code:selectcolumn}
+	\begin{minted}{mysql}
+        select name from language;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+\begin{listing}[H]
+	\caption{select单列结果}
+	\label{code:resultofselectcolumn}
+	\begin{minted}{mysql}
+        +----------+
+        | name     |
+        +----------+
+        | English  |
+        | Italian  |
+        | Japanese |
+        | Mandarin |
+        | French   |
+        | German   |
+        +----------+
+        6 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+\begin{orangebox}[frametitle={Tips 4.1}]
+\begin{enumerate}
+    \item 在没有排序的情况下，这个数据顺序没有任何意义。
+    \item 多条SQL语句必须以分号（；）分隔。MySQL不需要在单条SQL语句后加分号。(但尽可能加上分号)
+    \item SQL语句不区分大小写（可以对所有SQL关键字使用大写，而对所有列和表名使用小写）。
+    \item 在处理SQL语句时，其中所有空格都被忽略。
+\end{enumerate}
+\end{orangebox}
+\subsection{检索多个列}
+从一个表中检索多个列必须在SELECT关键字后给出多个列名，列名之间必须以逗号分隔:
+\begin{listing}[H]
+	\caption{select多列}
+	\label{code:selectcolumns}
+	\begin{minted}{mysql}
+        select language_id,name,last_update from language;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{select多列结果}
+	\label{code:resultofselectcolumns}
+	\begin{minted}{mysql}
+        +-------------+----------+---------------------+
+        | language_id | name     | last_update         |
+        +-------------+----------+---------------------+
+        |           1 | English  | 2006-02-15 05:02:19 |
+        |           2 | Italian  | 2006-02-15 05:02:19 |
+        |           3 | Japanese | 2006-02-15 05:02:19 |
+        |           4 | Mandarin | 2006-02-15 05:02:19 |
+        |           5 | French   | 2006-02-15 05:02:19 |
+        |           6 | German   | 2006-02-15 05:02:19 |
+        +-------------+----------+---------------------+
+        6 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 4.2}]
+\begin{enumerate}
+    \item 选择多个列时，一定要在列名之间加上逗号，但最后一个列名后不加。
+    \item SQL语句一般返回原始的、无格式的数据。数据的格式化是一个表示问题，而不是一个检索问题。
+\end{enumerate}
+\end{orangebox}
+
+\subsection{检索所有列}
+SELECT语句检索所有的列可以通过星号（*）通配符来达到，如下所示：
+\begin{listing}[H]
+	\caption{select所有列}
+	\label{code:selectallcolumns}
+	\begin{minted}{mysql}
+        SELECT * FROM store;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{select所有列结果}
+	\label{code:resultofselectallcolumns}
+	\begin{minted}{mysql}
+        +----------+------------------+------------+---------------------+
+        | store_id | manager_staff_id | address_id | last_update         |
+        +----------+------------------+------------+---------------------+
+        |        1 |                1 |          1 | 2006-02-15 04:57:12 |
+        |        2 |                2 |          2 | 2006-02-15 04:57:12 |
+        +----------+------------------+------------+---------------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+\begin{orangebox}[frametitle={Tips 4.3}]
+    \begin{enumerate}
+        \item 虽然使用通配符可能会使你自己省事，但检索不需要的列通常会降低检索和应用程序的性能。
+        \item 使用通配符能检索出名字未知的列。
+    \end{enumerate}
+    \end{orangebox}
+\subsection{检索不同的行（DISTINCT）}
+
+只返回不同的值可以用DISTINCT,如以下所示：
+
+\begin{listing}[H]
+	\caption{select不同行}
+	\label{code:selectdifferentrows}
+	\begin{minted}{mysql}
+        SELECT DISTINCT staff_id FROM rental;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{select所有列结果}
+	\label{code:resultofselectdifferent rows}
+	\begin{minted}{mysql}
+        +----------+
+        | staff_id |
+        +----------+
+        |        1 |
+        |        2 |
+        +----------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+但如果直接SELECT，不加DISTINCT就会有16044条。
+
+\begin{orangebox}[frametitle={Tips 4.4}]
+    \textbf {不能部分使用DISTINCT} ,DISTINCT关键字应用于所有列而不仅是前置它的列。
+\end{orangebox}
+
+\subsection{限制结果（LIMIT）}
+
+为了返回第一行或前几行，可使用LIMIT子句：
+\begin{listing}[H]
+	\caption{LIMIT子句}
+	\label{code:limitresult}
+	\begin{minted}{mysql}
+        SELECT actor_id FROM actor_info LIMIT 5;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{LIMIT的结果}
+	\label{code:resultlimitresult}
+	\begin{minted}{mysql}
+        +----------+
+        | actor_id |
+        +----------+
+        |        1 |
+        |        2 |
+        |        3 |
+        |        4 |
+        |        5 |
+        +----------+
+        5 rows in set (1.15 sec)
+\end{minted}
+\end{listing}
+这个结果就是返回开始的5行
+
+如果要返回从第9行开始的5行，可以执行以下命令：
+\begin{listing}[H]
+	\caption{从特定行开始的LIMIT子句}
+	\label{code:distinctlimitresult}
+	\begin{minted}{mysql}
+        SELECT actor_id FROM actor_info LIMIT 9,5;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{从特定行开始的LIMIT的结果}
+	\label{code:resultdistinctlimitresult}
+	\begin{minted}{mysql}
+        +----------+
+        | actor_id |
+        +----------+
+        |       10 |
+        |       11 |
+        |       12 |
+        |       13 |
+        |       14 |
+        +----------+
+        5 rows in set (1.20 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 4.5}]
+    \begin{enumerate}
+        \item 检索出来的第一行为行0而不是行1。因此，LIMIT 1, 1将检索出第二行而不是第一行。
+        \item 在行数不够时，MySQL将只返回它能返回的那么多行。
+    \end{enumerate}
+\end{orangebox}
+
+\subsection{使用完全限定的表名}
+可以使用限定列列名来索引列，以下两条命令与第一条本章第一条的结果完全相同：
+\begin{listing}[H]
+	\caption{限定表名}
+	\label{code:distincttablename}
+	\begin{minted}{mysql}
+        SELECT language.name FROM language;
+        SELECT language.name FROM sakila.language;
+\end{minted}
+\end{listing}
+
+\section{排序数据}
+\subsection{普通排序}
+之前SQL语句返回数据库表的单列，检索出的数据并不是随机显示的，而是以它在底层表中出现的顺序显示。但是，如果数据后来进行过更新或删除，则此顺
+序将会受到MySQL重用回收存储空间的影响。
+\begin{redbox}[frametitle={Defination 5.1 子句（clause）}]
+    SQL语句由子句构成，有些子句是必需的，而有的是可选的。一个子句通常由一个关键字和所提供的数据组成。
+\end{redbox}
+
+因此，为了排序SELECT语句检索出来的数据，我们可以使用ORDER BY语句：
+\begin{listing}[H]
+	\caption{ORDER BY子句}
+	\label{code:orderby}
+	\begin{minted}{mysql}
+        SELECT city FROM city ORDER BY city_id LIMIT 10;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{ORDER BY子句的结果}
+	\label{code:orderbyresult}
+	\begin{minted}{mysql}
+        +----------------------+
+        | city                 |
+        +----------------------+
+        | A Coru?a (La Coru?a) |
+        | Abha                 |
+        | Abu Dhabi            |
+        | Acu?a                |
+        | Adana                |
+        | Addis Abeba          |
+        | Aden                 |
+        | Adoni                |
+        | Ahmadnagar           |
+        | Akishima             |
+        +----------------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 5.1}]
+        通常ORDER BY子句中使用的列是为显示所选择的列。但是可以通过非选择列进行排序。
+\end{orangebox}
+
+\subsection{按多列排序}
+按多个列排序，只要指定列名，列名之间用逗号分开即可：
+\begin{listing}[H]
+	\caption{多列排序}
+	\label{code:multiplecolumnsorder}
+	\begin{minted}{mysql}
+        SELECT last_name,first_name,store_id FROM customer ORDER BY last_name,first_name LIMIT 10;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{多列排序的结果}
+	\label{code:multiplecolumnsorderresult}
+	\begin{minted}{mysql}
+        +-----------+------------+----------+
+        | last_name | first_name | store_id |
+        +-----------+------------+----------+
+        | ABNEY     | RAFAEL     |        1 |
+        | ADAM      | NATHANIEL  |        1 |
+        | ADAMS     | KATHLEEN   |        2 |
+        | ALEXANDER | DIANA      |        1 |
+        | ALLARD    | GORDON     |        1 |
+        | ALLEN     | SHIRLEY    |        2 |
+        | ALVAREZ   | CHARLENE   |        2 |
+        | ANDERSON  | LISA       |        2 |
+        | ANDREW    | JOSE       |        1 |
+        | ANDREWS   | IDA        |        2 |
+        +-----------+------------+----------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{指定排序方向}
+\begin{orangebox}[frametitle={Tips 5.3}]
+    \begin{enumerate}
+        \item 默认排序是升序排序（从A到Z）。
+        \item 降序排序（从Z到A）必须指定DESC关键字。
+        \item 在多个列上降序排序，必须对每个列指定DESC关键字。（与DESC对应的是ASC）
+        \item 在字典（dictionary）排序顺序中，A被视为与a相同，这是MySQL（和大多数数据库管理系统）的默认行为。（也就是不区分A和a）。
+        \item ORDER BY子句位于FROM子句之后，LIMIT位于ORDER BY之后。
+    \end{enumerate}
+\end{orangebox}
+降序排列的SQL语句如下所示：
+\begin{listing}[H]
+	\caption{降序排列}
+	\label{code:descsorder}
+	\begin{minted}{mysql}
+        SELECT last_name,first_name,last_update FROM actor ORDER BY last_name DESC LIMIT 10;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{降序排列的结果}
+	\label{code:descsorderresult}
+	\begin{minted}{mysql}
+        +-------------+------------+---------------------+
+        | last_name   | first_name | last_update         |
+        +-------------+------------+---------------------+
+        | ZELLWEGER   | JULIA      | 2006-02-15 04:34:33 |
+        | ZELLWEGER   | CAMERON    | 2006-02-15 04:34:33 |
+        | ZELLWEGER   | MINNIE     | 2006-02-15 04:34:33 |
+        | WRAY        | CAMERON    | 2006-02-15 04:34:33 |
+        | WOOD        | FAY        | 2006-02-15 04:34:33 |
+        | WOOD        | UMA        | 2006-02-15 04:34:33 |
+        | WITHERSPOON | ANGELA     | 2006-02-15 04:34:33 |
+        | WINSLET     | FAY        | 2006-02-15 04:34:33 |
+        | WINSLET     | RIP        | 2006-02-15 04:34:33 |
+        | WILSON      | WILL       | 2006-02-15 04:34:33 |
+        +-------------+------------+---------------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+如果多列降序排列，可以参照以下SQL语句：
+\begin{listing}[H]
+	\caption{多列降序排列}
+	\label{code:muldescsorder}
+	\begin{minted}{mysql}
+        SELECT amount,rental_id,staff_id FROM payment ORDER BY amount DESC,rental_id LIMIT 10;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{多列降序排序的结果}
+	\label{code:muldescsorderresult}
+	\begin{minted}{mysql}
+        +--------+-----------+----------+
+        | amount | rental_id | staff_id |
+        +--------+-----------+----------+
+        |  11.99 |       106 |        2 |
+        |  11.99 |      2166 |        1 |
+        |  11.99 |      3973 |        1 |
+        |  11.99 |      4383 |        2 |
+        |  11.99 |      8831 |        2 |
+        |  11.99 |     11479 |        2 |
+        |  11.99 |     14759 |        1 |
+        |  11.99 |     14763 |        2 |
+        |  11.99 |     15415 |        2 |
+        |  11.99 |     16040 |        2 |
+        +--------+-----------+----------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+这种方法（ORDER BY和LIMIT的组合）的一个变种就是直接可以检索出极大值或者极小值，由于上面是极大值，下面我以极小值举例子：
+\begin{listing}[H]
+	\caption{检索极值}
+	\label{code:findmaxormin}
+	\begin{minted}{mysql}
+        SELECT amount FROM payment ORDER BY amount LIMIT 1;
+    \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{检索极值的结果}
+	\label{code:findmaxorminresult}
+	\begin{minted}{mysql}
+        +--------+
+        | amount |
+        +--------+
+        |   0.00 |
+        +--------+
+        1 row in set (0.00 sec)
+        \end{minted}
+\end{listing}
+
+\section{过滤数据}
+\subsection{WHERE 子句}
+    
+\begin{redbox}[frametitle={Defination 6.1 搜索条件（search criteria）}]
+        搜索条件也称为过滤条件（filter condition），只检索所需数据需要指定搜索条件（search criteria）。
+\end{redbox}
+SELECT语句中，数据根据WHERE子句中指定的搜索条件进行过滤,命令如下：
+\begin{listing}[H]
+	\caption{WHERE子句}
+	\label{code:whereclause}
+	\begin{minted}{mysql}
+         SELECT customer_id,staff_id,amount FROM payment WHERE staff_id = 1 LIMIT 10;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{WHERE子句的结果}
+	\label{code:whereclauseresult}
+	\begin{minted}{mysql}
+         +-------------+----------+--------+
+         | customer_id | staff_id | amount |
+         +-------------+----------+--------+
+         |           1 |        1 |   2.99 |
+         |           1 |        1 |   0.99 |
+         |           1 |        1 |   5.99 |
+         |           1 |        1 |   4.99 |
+         |           1 |        1 |   4.99 |
+         |           1 |        1 |   3.99 |
+         |           1 |        1 |   5.99 |
+         |           1 |        1 |   4.99 |
+         |           1 |        1 |   4.99 |
+         |           1 |        1 |   7.99 |
+         +-------------+----------+--------+
+         10 rows in set (0.00 sec)
+
+        \end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 6.1}]
+        \begin{enumerate}
+            \item 同时使用ORDER BY和WHERE子句时,ORDER BY位于WHERE之后。
+            \item WHERE子句在表名（FROM子句）之后。
+            \item 单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不用引号。
+            \item NULL具有特殊含义，在过滤使用不匹配（<>，！=）过滤选择出不具有特定值的行的时候，并不会返回空值，因此需要空值查询。
+        \end{enumerate}
+\end{orangebox}
+
+
+\begin{table}[H]
+        \caption{\textbf{WHERE子句操作符}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        操作符&说明\\
+        \midrule%第二道横线 
+        =       &       等于                    \\
+        <>      &       不等于                  \\
+        ！=     &       不等于                  \\
+        <       &       小于                    \\
+        <=      &       小于等于                \\
+        >       &       大于                   \\
+        >=      &       大于等于               \\
+        BETWEEN &       在指定的两个值之间      \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+\subsection{检查单个值}
+首先是用等号的WHERE子句：
+\begin{listing}[H]
+	\caption{用等号的WHERE子句}
+	\label{code:equalwhereclause}
+	\begin{minted}{mysql}
+                SELECT customer_id,email,address_id FROM customer WHERE customer_id = 7;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{用等号的WHERE子句的结果}
+	\label{code:equalwhereclauseresult}
+	\begin{minted}{mysql}
+         +-------------+---------------------------------+------------+
+         | customer_id | email                           | address_id |
+         +-------------+---------------------------------+------------+
+         |           7 | MARIA.MILLER@sakilacustomer.org |         11 |
+         +-------------+---------------------------------+------------+
+         1 row in set (0.00 sec)
+
+        \end{minted}
+\end{listing}
+
+接着可以用小于、小于等于、大于、大于等于的WHERE子句进行搜索：
+\begin{listing}[H]
+	\caption{用大于的WHERE子句}
+	\label{code:unequalwhereclause}
+	\begin{minted}{mysql}
+         SELECT amount,payment_date,last_update FROM payment 
+         WHERE amount > 11.00 
+         ORDER BY amount DESC 
+         LIMIT 5;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{用大于的WHERE子句的结果}
+	\label{code:unequalwhereclauseresult}
+	\begin{minted}{mysql}
+         +--------+---------------------+---------------------+
+         | amount | payment_date        | last_update         |
+         +--------+---------------------+---------------------+
+         |  11.99 | 2005-07-29 22:37:41 | 2006-02-15 22:12:31 |
+         |  11.99 | 2005-08-21 23:34:00 | 2006-02-15 22:13:08 |
+         |  11.99 | 2005-08-23 22:19:33 | 2006-02-15 22:14:00 |
+         |  11.99 | 2005-05-25 18:18:19 | 2006-02-15 22:14:00 |
+         |  11.99 | 2005-08-22 23:48:56 | 2006-02-15 22:14:07 |
+         +--------+---------------------+---------------------+
+         5 rows in set (0.00 sec)
+
+        \end{minted}
+\end{listing}
+
+\subsection{不匹配检查}
+如下是采用不匹配检查的SQL语句，其中<>与！=等价：
+\begin{listing}[H]
+	\caption{用不匹配检查的WHERE子句}
+	\label{code:unmatchwhereclause}
+	\begin{minted}{mysql}
+         SELECT name,last_update FROM language WHERE name <> 'Japanese';
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{用不匹配检查的WHERE子句的结果}
+	\label{code:unmatchwhereclauseresult}
+	\begin{minted}{mysql}
+         +----------+---------------------+
+         | name     | last_update         |
+         +----------+---------------------+
+         | English  | 2006-02-15 05:02:19 |
+         | Italian  | 2006-02-15 05:02:19 |
+         | Mandarin | 2006-02-15 05:02:19 |
+         | French   | 2006-02-15 05:02:19 |
+         | German   | 2006-02-15 05:02:19 |
+         +----------+---------------------+
+         5 rows in set (0.00 sec)
+
+        \end{minted}
+\end{listing}
+
+\subsection{范围值检查}
+
+范围值检查需要用BETWEEN，如下是使用BETWEEN的SQL语句：
+\begin{listing}[H]
+	\caption{用BETWEEN的WHERE子句}
+	\label{code:betweenwhereclause}
+	\begin{minted}{mysql}
+         SELECT amount,payment_date,last_update FROM payment 
+         WHERE amount BETWEEN 10 AND 11
+         ORDER BY amount DESC 
+         LIMIT 5;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{用BETWEEN的WHERE子句的结果}
+	\label{code:betweenwhereclauseresult}
+	\begin{minted}{mysql}
+         +--------+---------------------+---------------------+
+         | amount | payment_date        | last_update         |
+         +--------+---------------------+---------------------+
+         |  10.99 | 2005-07-30 13:47:43 | 2006-02-15 22:12:30 |
+         |  10.99 | 2005-07-27 20:23:12 | 2006-02-15 22:12:30 |
+         |  10.99 | 2005-08-01 06:50:26 | 2006-02-15 22:12:31 |
+         |  10.99 | 2005-06-21 01:04:35 | 2006-02-15 22:12:33 |
+         |  10.99 | 2005-07-09 21:55:19 | 2006-02-15 22:12:35 |
+         +--------+---------------------+---------------------+
+         5 rows in set (0.00 sec)
+        \end{minted}
+\end{listing}
+
+\subsection{空值检查}
+
+\begin{redbox}[frametitle={Defination 6.5 NULL 无值（no value）}]
+        在一个列不包含值时，称其为包含空值NULL,它与字段包含0、空字符串或仅仅包含空格不同。
+\end{redbox}
+空值检查的SQL语句如下：
+\begin{listing}[H]
+	\caption{空值检查的WHERE子句}
+	\label{code:isnullnwhereclause}
+	\begin{minted}{mysql}
+         SELECT rental_date,return_date,staff_id 
+         FROM rental 
+         WHERE return_date IS NULL 
+         LIMIT 5;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{空值检查的WHERE子句的结果}
+	\label{code:isnullwhereclauseresult}
+	\begin{minted}{mysql}
+         +---------------------+-------------+----------+
+         | rental_date         | return_date | staff_id |
+         +---------------------+-------------+----------+
+         | 2006-02-14 15:16:03 | NULL        |        1 |
+         | 2006-02-14 15:16:03 | NULL        |        1 |
+         | 2006-02-14 15:16:03 | NULL        |        1 |
+         | 2006-02-14 15:16:03 | NULL        |        2 |
+         | 2006-02-14 15:16:03 | NULL        |        1 |
+         +---------------------+-------------+----------+
+         5 rows in set (0.00 sec)
+        \end{minted}
+\end{listing}
+
+\section{数据过滤}
+
+\subsection{操作符}
+\begin{redbox}[frametitle={Defination 7.1 操作符（operator）}]
+        用来联结或改变WHERE子句中的子句的关键字。也称为逻辑操作符（logical operator）。
+\end{redbox}
+
+\subsection{AND操作符}
+AND操作符给WHERE子句附加条件,参考以下SQL语句：
+
+\begin{listing}[H]
+	\caption{含AND操作符WHERE子句}
+	\label{code:andwhereclause}
+	\begin{minted}{mysql}
+         SELECT amount,customer_id,staff_id 
+         FROM payment 
+         WHERE amount BETWEEN 10 AND 11 
+         AND staff_id = 1 
+         AND customer_id BETWEEN 0 AND 100;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含AND操作符WHERE子句的结果}
+	\label{code:andwhereclauseresult}
+	\begin{minted}{mysql}
+         +--------+-------------+----------+
+         | amount | customer_id | staff_id |
+         +--------+-------------+----------+
+         |  10.99 |          21 |        1 |
+         |  10.99 |          33 |        1 |
+         |  10.99 |          45 |        1 |
+         |  10.99 |          54 |        1 |
+         |  10.99 |          76 |        1 |
+         |  10.99 |          78 |        1 |
+         |  10.99 |          86 |        1 |
+         +--------+-------------+----------+
+         7 rows in set (0.01 sec)
+        \end{minted}
+\end{listing}
+\begin{redbox}[frametitle={Defination 7.2 AND操作符}]
+        用在WHERE子句中的关键字，用来指示检索满足所有给定条件的行。
+\end{redbox}
+
+\subsection{OR操作符}
+OR操作符指示MySQL检索匹配任一条件的行，SQL命令如下所示：
+\begin{listing}[H]
+	\caption{含OR操作符WHERE子句}
+	\label{code:orwhereclause}
+        \begin{minted}{mysql}
+        SELECT payment_date,rental_id,amount 
+        FROM payment 
+        WHERE amount = 0.99 
+        OR rental_id = 76 
+        LIMIT 10;
+        \end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含OR操作符WHERE子句的结果}
+	\label{code:orwhereclauseresult}
+\begin{minted}{mysql}
+        +---------------------+-----------+--------+
+        | payment_date        | rental_id | amount |
+        +---------------------+-----------+--------+
+        | 2005-05-25 11:30:37 |        76 |   2.99 |
+        | 2005-05-28 10:35:23 |       573 |   0.99 |
+        | 2005-06-15 18:02:53 |      1422 |   0.99 |
+        | 2005-06-18 13:33:59 |      2363 |   0.99 |
+        | 2005-07-28 17:33:39 |      8074 |   0.99 |
+        | 2005-07-28 19:20:07 |      8116 |   0.99 |
+        | 2005-08-02 18:01:38 |     11367 |   0.99 |
+        | 2005-08-18 03:57:29 |     12250 |   0.99 |
+        | 2005-08-19 09:55:16 |     13068 |   0.99 |
+        | 2005-08-21 23:33:57 |     14762 |   0.99 |
+        +---------------------+-----------+--------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{计算次序}
+\begin{orangebox}[frametitle={Tips 7.4}]
+        \begin{enumerate}
+            \item 同时有AND和OR的WHERE子句，优先处理AND，因为AND在计算次序中优先级更高
+            \item 如果需要改变优先级，需要圆括号明确地分组操作符。（即使默认次序是正确的情况下）
+        \end{enumerate}
+\end{orangebox}
+例如，我要查询actor\_id为1的并且film\_id为166或277的记录，如果写成以下这样：
+\begin{listing}[H]
+	\caption{错误次序的WHERE子句}
+	\label{code:faultwhereclause}
+\begin{minted}{mysql}
+        SELECT * FROM film_actor 
+        WHERE actor_id =1 AND film_id = 166 
+        OR film_id = 277;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{错误次序的WHERE子句的结果}
+	\label{code:faultwhereclauseresult}
+\begin{minted}{mysql}
+        +----------+---------+---------------------+
+        | actor_id | film_id | last_update         |
+        +----------+---------+---------------------+
+        |        1 |     166 | 2006-02-15 05:05:03 |
+        |        1 |     277 | 2006-02-15 05:05:03 |
+        |       24 |     277 | 2006-02-15 05:05:03 |
+        |       37 |     277 | 2006-02-15 05:05:03 |
+        |      107 |     277 | 2006-02-15 05:05:03 |
+        |      115 |     277 | 2006-02-15 05:05:03 |
+        +----------+---------+---------------------+
+        6 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+此时显然是不对的，我查询成了，actor\_id为1且film\_id为166或者film\_id为277的情况，因此在这种情况下应该将语句改为：
+\begin{listing}[H]
+	\caption{正确次序的WHERE子句}
+	\label{code:rightwhereclause}
+\begin{minted}{mysql}
+        SELECT * FROM film_actor 
+        WHERE actor_id =1 
+        AND (film_id = 166 OR film_id = 277);
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{正确次序的WHERE子句的结果}
+	\label{code:rightwhereclauseresult}
+\begin{minted}{mysql}
+        +----------+---------+---------------------+
+        | actor_id | film_id | last_update         |
+        +----------+---------+---------------------+
+        |        1 |     166 | 2006-02-15 05:05:03 |
+        |        1 |     277 | 2006-02-15 05:05:03 |
+        +----------+---------+---------------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{IN操作符}
+IN操作符用来指定条件范围，范围中的每个条件都可以进行匹配，因此IN操作符在一定程度上可以代替OR操作符，我们仍然用上面那个例子：
+\begin{listing}[H]
+	\caption{含OR操作符WHERE子句}
+	\label{code:secondorwhereclause}
+\begin{minted}{mysql}
+        SELECT * FROM film_actor 
+        WHERE actor_id =1 
+        AND film_id IN (166,277);
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含OR操作符WHERE子句的结果}
+	\label{code:secondorwhereclauseresult}
+\begin{minted}{mysql}
+        +----------+---------+---------------------+
+        | actor_id | film_id | last_update         |
+        +----------+---------+---------------------+
+        |        1 |     166 | 2006-02-15 05:05:03 |
+        |        1 |     277 | 2006-02-15 05:05:03 |
+        +----------+---------+---------------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+由此可以给出IN操作符的定义：
+\begin{redbox}[frametitle={Defination 7.5 IN操作符}]
+        WHERE子句中用来指定要匹配值的清单的关键字，功能与OR相当。
+\end{redbox}
+
+\begin{orangebox}[frametitle={Tips 7.5}]
+        \begin{enumerate}
+            \item IN操作符的语法更清楚且更直观。
+            \item IN操作符计算的次序更容易管理。
+            \item IN操作符一般比OR操作符清单执行更快。
+            \item IN操作符可以包含其他SELECT语句，使得能够更动态地建立WHERE子句。
+        \end{enumerate}
+\end{orangebox}
+
+\subsection{NOT操作符}
+\begin{redbox}[frametitle={Defination 7.6 NOT操作符}]
+        WHERE子句中用来否定后跟条件的关键字。
+\end{redbox}
+
+这个例子改成不是actor\_id为1且film\_id为166或者film\_id为277，并且限制10条，则有：
+\begin{listing}[H]
+	\caption{含NOT操作符WHERE子句}
+	\label{code:notwhereclause}
+\begin{minted}{mysql}
+        SELECT * FROM film_actor 
+        WHERE actor_id =1 
+        AND film_id NOT IN (166,277)
+        LIMIT 10;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含NOT操作符WHERE子句的结果}
+	\label{code:notwhereclauseresult}
+\begin{minted}{mysql}
+        +----------+---------+---------------------+
+        | actor_id | film_id | last_update         |
+        +----------+---------+---------------------+
+        |        1 |       1 | 2006-02-15 05:05:03 |
+        |        1 |      23 | 2006-02-15 05:05:03 |
+        |        1 |      25 | 2006-02-15 05:05:03 |
+        |        1 |     106 | 2006-02-15 05:05:03 |
+        |        1 |     140 | 2006-02-15 05:05:03 |
+        |        1 |     361 | 2006-02-15 05:05:03 |
+        |        1 |     438 | 2006-02-15 05:05:03 |
+        |        1 |     499 | 2006-02-15 05:05:03 |
+        |        1 |     506 | 2006-02-15 05:05:03 |
+        |        1 |     509 | 2006-02-15 05:05:03 |
+        +----------+---------+---------------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 7.6}]
+        MySQL 支 持 使 用 NOT 对 IN 、 BETWEEN 和EXISTS子句取反。
+\end{orangebox}
+
+
+\section{通配符}
+\subsection{LIKE操作符}
+\begin{redbox}[frametitle={Defination 8.1 通配符（wildcard）}]
+        用来匹配值的一部分的特殊字符。
+\end{redbox}
+\begin{redbox}[frametitle={Defination 8.1 搜索模式（search pattern）}]
+        由字面值、通配符或两者组合构成的搜索条件。
+\end{redbox}
+
+在搜索子句中使用通配符必须使用LIKE操作符。LIKE指示MySQL，后跟的搜索模式利用通配符匹配而不是直接相等匹配进行比较。
+
+\begin{orangebox}[frametitle={Tips 8.1}]
+\begin{enumerate}
+        \item LIKE是谓词而不是操作符。
+        \item 操作符作为谓词（predicate）时不是操作符。
+\end{enumerate}  
+\end{orangebox}
+
+\subsection{百分号（\%）通配符}
+
+\begin{redbox}[frametitle={Defination 8.2 百分号（\%）通配符}]
+        \%表示任何字符出现任意次数。
+\end{redbox}
+
+例如，我要找到address表中district字段所有开头Ha的记录，就可以采取以下SQL语句：
+\begin{listing}[H]
+	\caption{百分号通配符}
+	\label{code:percentsignwildcard}
+\begin{minted}{mysql}
+        SELECT DISTINCT district FROM address WHERE district LIKE 'Ha%';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含百分号通配符的结果}
+	\label{code:percentsignwildcardresult}
+\begin{minted}{mysql}
+        +----------+
+        | district |
+        +----------+
+        | Hamilton |
+        | Haryana  |
+        | Ha Darom |
+        | Haiphong |
+        | Haskovo  |
+        | Hawalli  |
+        | Hanoi    |
+        | Hainan   |
+        +----------+
+        8 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 8.2}]
+        \begin{enumerate}
+                \item \textbf{区分大小写 }  根据MySQL的配置方式，搜索可以是区分大小写的。
+                \item \textbf{注意尾空格 } 尾空格可能会干扰通配符匹配。
+                \item \textbf{注意NULL } 通配符不可以匹配NULL。
+                \item \textbf{匹配字符数 } \%代表搜索模式中给定位置的0个、1个或多个字符。
+        \end{enumerate}      
+\end{orangebox}
+
+\subsection{下划线（\_）通配符}
+\begin{redbox}[frametitle={Defination 8.3 下划线（\_）通配符}]
+        下划线\_的用途与\%一样，但下划线只匹配单个字符而不是多个字符。
+\end{redbox}
+
+现在我要找到customer中字段名为first\_name中包含开头为ERI的数据，则SQL语句可以是：
+\begin{listing}[H]
+	\caption{下划线通配符}
+	\label{code:underlinewildcard}
+\begin{minted}{mysql}
+        SELECT first_name,last_name FROM customer WHERE first_name LIKE 'ERI_';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含下划线通配符的结果}
+	\label{code:underlinewildcardresult}
+\begin{minted}{mysql}
+        +------------+-----------+
+        | first_name | last_name |
+        +------------+-----------+
+        | ERIN       | DUNN      |
+        | ERIC       | ROBERT    |
+        | ERIK       | GUILLEN   |
+        +------------+-----------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\section{正则表达式}
+\subsection{基本字符匹配}
+
+REGEXP跟的东西为正则表达式，我们查询first\_name字段包含ERI的所有记录，SQL语句可以为：
+
+\begin{listing}[H]
+	\caption{基本字符匹配}
+	\label{code:matchword}
+\begin{minted}{mysql}
+        SELECT first_name,last_name FROM customer WHERE first_name REGEXP 'ERI';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{基本字符匹配的结果}
+	\label{code:matchwordresult}
+\begin{minted}{mysql}
+        +------------+-----------+
+        | first_name | last_name |
+        +------------+-----------+
+        | CATHERINE  | CAMPBELL  |
+        | KATHERINE  | RIVERA    |
+        | VALERIE    | BLACK     |
+        | ERIN       | DUNN      |
+        | ERICA      | MATTHEWS  |
+        | ERIKA      | PENA      |
+        | ERIC       | ROBERT    |
+        | FREDERICK  | ISBELL    |
+        | ERIK       | GUILLEN   |
+        +------------+-----------+
+        9 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+正则表达式中\.表示为任意一个字符，这点可以实现与LIKE相同的效果，可以查找customer表中id为177，277……等记录：
+
+\begin{listing}[H]
+	\caption{匹配任意一个字符的正则表达式字符}
+	\label{code:matchonewordzhengze}
+\begin{minted}{mysql}
+        SELECT customer_id,first_name,last_name FROM customer WHERE customer_id REGEXP '.77';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含匹配任意一个字符的正则表达式字符的结果}
+	\label{code:matchonewordzhengzeresult}
+\begin{minted}{mysql}
+        +-------------+------------+-----------+
+        | customer_id | first_name | last_name |
+        +-------------+------------+-----------+
+        |         177 | SAMANTHA   | DUNCAN    |
+        |         277 | OLGA       | JIMENEZ   |
+        |         377 | HOWARD     | FORTNER   |
+        |         477 | DAN        | PAINE     |
+        |         577 | CLIFTON    | MALCOLM   |
+        +-------------+------------+-----------+
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 9.1.1 LIKE与RECEGP的区别}]
+\begin{enumerate}
+        \item LIKE匹配整个列。LIKE不会在列值找到被匹配的文本相应的行也不被返回。
+        \item REGEXP在列值内进行匹配，REGEXP会找到在列值中被匹配的文本。
+\end{enumerate}
+\end{orangebox}
+
+\begin{orangebox}[frametitle={Tips 9.1.2 匹配不区分大小写 }]
+        正则表达式匹配不区分大小写，为区分大小写，可使用BINARY关键字。
+\end{orangebox}
+
+\subsection{OR匹配}
+
+OR条件使用|,比如我在上面的例子搜索ID为177、277、377、477的记录，则有：
+
+\begin{listing}[H]
+	\caption{含OR匹配的正则表达式}
+	\label{code:ormatchzhengze}
+\begin{minted}{mysql}
+        SELECT customer_id,first_name,last_name 
+        FROM customer 
+        WHERE customer_id REGEXP '177|277|377|477';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{含OR匹配的正则表达式结果}
+	\label{code:ormatchzhengzeresult}
+\begin{minted}{mysql}
+        +-------------+------------+-----------+
+        | customer_id | first_name | last_name |
+        +-------------+------------+-----------+
+        |         177 | SAMANTHA   | DUNCAN    |
+        |         277 | OLGA       | JIMENEZ   |
+        |         377 | HOWARD     | FORTNER   |
+        |         477 | DAN        | PAINE     |
+        +-------------+------------+-----------+
+        4 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{匹配几个字符之一}
+格式是通过指定一组用[和]括起来的字符来完成，可以与上一个输出具有相同的效果：
+
+\begin{listing}[H]
+	\caption{匹配几个字符的正则表达式}
+	\label{code:mulmatchzhengze}
+\begin{minted}{mysql}
+        SELECT customer_id,first_name,last_name 
+        FROM customer 
+        WHERE customer_id REGEXP '[1234]77';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{匹配几个字符的正则表达式结果}
+	\label{code:mulmatchzhengzeresult}
+\begin{minted}{mysql}
+        +-------------+------------+-----------+
+        | customer_id | first_name | last_name |
+        +-------------+------------+-----------+
+        |         177 | SAMANTHA   | DUNCAN    |
+        |         277 | OLGA       | JIMENEZ   |
+        |         377 | HOWARD     | FORTNER   |
+        |         477 | DAN        | PAINE     |
+        +-------------+------------+-----------+
+        4 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 9.3.1 |与[ ]的对比}]
+        [ ]是另一种形式的OR语句。事实上，正则表达式[123]Ton为[1|2|3]Ton的缩写，也可以使用后者。
+\end{orangebox}
+
+
+\begin{orangebox}[frametitle={Tips 9.3.2 否定字符集}]
+        在集合的开始处放置一个\^{}即可（[\^{}123]却匹配除这些字符外的任何东西）。
+\end{orangebox}
+
+\subsection{匹配范围}
+
+\begin{orangebox}[frametitle={Tips 9.4.1 匹配范围}]
+\begin{enumerate}
+        \item \textbf{数字集合}：[0-9]
+        \item \textbf{字母集合}：[a-z]
+\end{enumerate}
+\end{orangebox}
+由此上面的例子可以写成：
+
+\begin{listing}[H]
+	\caption{匹配范围的正则表达式}
+	\label{code:rangematchzhengze}
+\begin{minted}{mysql}
+        SELECT customer_id,first_name,last_name 
+        FROM customer 
+        WHERE customer_id REGEXP '[1-5]77';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{匹配范围的正则表达式结果}
+	\label{code:rangematchzhengzeresult}
+\begin{minted}{mysql}
+        +-------------+------------+-----------+
+        | customer_id | first_name | last_name |
+        +-------------+------------+-----------+
+        |         177 | SAMANTHA   | DUNCAN    |
+        |         277 | OLGA       | JIMENEZ   |
+        |         377 | HOWARD     | FORTNER   |
+        |         477 | DAN        | PAINE     |
+        |         577 | CLIFTON    | MALCOLM   |
+        +-------------+------------+-----------+
+        5 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{匹配特殊字符}
+
+\begin{redbox}[frametitle={Defination 9.5.1 转义（escaping）}]
+        匹配特殊字符，必须用\textbackslash \textbackslash 为前导来查找特殊字符，这种处理就是所谓的转义。
+\end{redbox}
+
+\begin{table}[H]
+        \caption{\textbf{空白元字符}}%标题
+        \centering%把表居中
+        \begin{tabular}{cl}
+        \toprule%第一道横线
+        元字符&说明\\
+        \midrule%第二道横线 
+        \textbackslash \textbackslash f       &       换页                  \\
+        \textbackslash \textbackslash n      &       换行                  \\
+        \textbackslash \textbackslash r     &       回车                  \\
+        \textbackslash \textbackslash t       &      制表                   \\
+        \textbackslash \textbackslash v       &      纵向制表                   \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+我们可以检索包含.CROUSE的邮箱：
+
+\begin{listing}[H]
+	\caption{匹配特殊字符的正则表达式}
+	\label{code:specialmatchzhengze}
+\begin{minted}{mysql}
+        SELECT customer_id,first_name,last_name,email 
+        FROM customer 
+        WHERE email REGEXP '\\.CAS';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{匹配特殊字符的正则表达式结果}
+	\label{code:specialmatchzhengzeresult}
+\begin{minted}{mysql}
+        +-------------+------------+-----------+--------------------------------------+
+        | customer_id | first_name | last_name | email                                |
+        +-------------+------------+-----------+--------------------------------------+
+        |         207 | GERTRUDE   | CASTILLO  | GERTRUDE.CASTILLO@sakilacustomer.org |
+        |         282 | JENNY      | CASTRO    | JENNY.CASTRO@sakilacustomer.org      |
+        |         423 | ALFRED     | CASILLAS  | ALFRED.CASILLAS@sakilacustomer.org   |
+        +-------------+------------+-----------+--------------------------------------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 9.5.1 匹配\textbackslash}]
+        为了匹配反斜杠（\textbackslash）字符本身，需要使用\textbackslash \textbackslash \textbackslash。
+\end{orangebox}
+
+\subsection{匹配字符类}
+
+\begin{redbox}[frametitle={Defination 9.6.1 字符类（character class）}]
+        为更方便工作预定义的字符集。
+\end{redbox}
+
+\begin{table}[H]
+        \caption{\textbf{字符类}}%标题
+        \centering%把表居中
+        \begin{tabular}{cl}%两列，左边居中，右边左对齐
+        \toprule%第一道横线
+        类 & 说明 \\
+        \midrule%第二道横线 
+        \texttt{[:alnum:]} & 任意字母和数字（同[a-zA-Z0-9]） \\
+        \texttt{[:alpha:]} & 任意字符（同[a-zA-Z]） \\
+        \texttt{[:blank:]} & 任意字符（同[a-zA-Z]） \\
+        \texttt{[:cntrl:]} & ASCII控制字符（ASCII 0到31和127） \\
+        \texttt{[:digit:]} & 任意数字（同[0-9]） \\
+        \texttt{[:graph:]} & 与\texttt{[:print:]}相同，但不包括空格 \\
+        \texttt{[:lower:]} & 任意小写字母（同[a-z]） \\
+        \texttt{[:print:]} & 任意可打印字符 \\
+        \texttt{[:punct:]} & 既不在\texttt{[:alnum:]}又不在\texttt{[:cntrl:]}中的任意字符 \\
+        \texttt{[:space:]} & 包括空格在内的任意空白字符（同[\textbackslash\textbackslash f \textbackslash\textbackslash n \textbackslash\textbackslash r \textbackslash\textbackslash t \textbackslash\textbackslash v]） \\
+        \texttt{[:upper:]} & 任意大写字母（同[A-Z]） \\
+        \texttt{[:xdigit:]} & 任意十六进制数字（同[a-fA-F0-9]） \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}
+ 
+\subsection{匹配多个实例}
+
+\begin{table}[H]
+        \caption{\textbf{重复元字符}}%标题
+        \centering%把表居中
+        \begin{tabular}{cl}%定义两列，内容居中，并且添加竖直的分隔线
+        \toprule%第一道横线
+        元字符 & 说明 \\
+        \midrule%第二道横线 
+        * & 0个或多个匹配 \\
+        + & 1个或多个匹配（等于{1,}） \\
+        ? & 0个或1个匹配（等于{0,1}） \\
+        \{n\} & 指定数目的匹配 \\
+        \{n,\} & 不少于指定数目的匹配 \\
+        \{n,m\} & 匹配数目的范围（m不超过255） \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}
+例如，可以寻找rating为'PG','PG-13'的记录：
+
+\begin{listing}[H]
+	\caption{匹配多个实例的正则表达式}
+	\label{code:multimatchzhengze}
+\begin{minted}{mysql}
+        SELECT FID,title,rating 
+        FROM film_list  
+        WHERE rating REGEXP 'PG*'  
+        LIMIT 10;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{匹配多个实例的正则表达式结果}
+	\label{code:multimatchzhengzeresult}
+\begin{minted}{mysql}
+        +------+------------------+--------+
+        | FID  | title            | rating |
+        +------+------------------+--------+
+        |    1 | ACADEMY DINOSAUR | PG     |
+        |    6 | AGENT TRUMAN     | PG     |
+        |    7 | AIRPLANE SIERRA  | PG-13  |
+        |    9 | ALABAMA DEVIL    | PG-13  |
+        |   12 | ALASKA PHANTOM   | PG     |
+        |   13 | ALI FOREVER      | PG     |
+        |   18 | ALTER VICTORY    | PG-13  |
+        |   19 | AMADEUS HOLY     | PG     |
+        |   28 | ANTHEM LUKE      | PG-13  |
+        |   33 | APOLLO TEEN      | PG-13  |
+        +------+------------------+--------+
+\end{minted}
+\end{listing}
+
+\subsection{定位符}
+
+\begin{table}[H]
+        \caption{\textbf{定位元字符}}%标题
+        \centering%把表居中
+        \begin{tabular}{cl}%定义两列，内容居中，并且添加竖直的分隔线
+        \toprule%第一道横线
+        元字符 & 说明 \\
+        \midrule%第二道横线 
+        \^{} & 文本的开始 \\
+        \$ & 文本的结尾 \\
+        \texttt{[[:<:]]} & 词的开始 \\
+        \texttt{[[:>:]]} & 词的结尾 \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}
+
+我们尝试完全实现LIKE的功能：
+
+\begin{listing}[H]
+	\caption{匹配定位符的正则表达式}
+	\label{code:locationmatchzhengze}
+\begin{minted}{mysql}
+        SELECT first_name, last_name 
+        FROM customer 
+        WHERE first_name REGEXP '^ERI.$';        
+\end{minted}
+\end{listing}
+
+\begin{listing}[H]
+	\caption{匹配定位符的正则表达式结果}
+	\label{code:locationmatchzhengzeresult}
+\begin{minted}{mysql}
+        +------------+-----------+
+        | first_name | last_name |
+        +------------+-----------+
+        | ERIN       | DUNN      |
+        | ERIC       | ROBERT    |
+        | ERIK       | GUILLEN   |
+        +------------+-----------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+
+\section{创建计算字段}
+\subsection{计算字段}
+
+\begin{redbox}[frametitle={Defination 10.1 字段（field） }]
+        基本上与列（column）的意思相同,数据库列一般称为列,字段通常用在计算字段的连接上。
+\end{redbox}
+
+
+\begin{redbox}[frametitle={Defination 10.1 计算字段}]
+        计算字段不存在于数据库表中。计算字段是运行时在SELECT语句内创建的。
+\end{redbox}
+
+\subsection{拼接字段}
+\begin{redbox}[frametitle={Defination 10.2 拼接（concatenate）}]
+        将值联结到一起构成单个值，MySQL的SELECT语句中用Concat()函数来拼接两个列。
+\end{redbox}
+
+可以采用第八章最后customer表的例子，我们将first\_name字段和laste\_name字段连接起来：
+\begin{listing}[H]
+	\caption{拼接字段语句}
+	\label{code:concatfield}
+\begin{minted}{mysql}
+        SELECT Concat(first_name,' ',last_name,'(',email,')')  
+        FROM customer 
+        WHERE first_name LIKE 'ERI_';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{拼接字段语句的结果}
+	\label{code:concatfieldresult}
+\begin{minted}{mysql}
+        +------------------------------------------------+
+        | Concat(first_name,' ',last_name,'(',email,')') |
+        +------------------------------------------------+
+        | ERIN DUNN(ERIN.DUNN@sakilacustomer.org)        |
+        | ERIC ROBERT(ERIC.ROBERT@sakilacustomer.org)    |
+        | ERIK GUILLEN(ERIK.GUILLEN@sakilacustomer.org)  |
+        +------------------------------------------------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+在此基础上，可以运用RTrim()函数删除多余空格进而整理数据：
+\begin{listing}[H]
+	\caption{整理拼接字段语句}
+	\label{code:treatconcatfield}
+\begin{minted}{mysql}
+        SELECT Concat(RTrim(first_name),' ',RTrim(last_name),'(',RTrim(email),')')  
+        FROM customer 
+        WHERE first_name LIKE 'ERI_'
+        ORDER BY first_name DESC;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{整理拼接字段语句的结果}
+	\label{code:treatconcatfieldresult}
+\begin{minted}{mysql}
+        +---------------------------------------------------------------------+
+        | Concat(RTrim(first_name),' ',RTrim(last_name),'(',RTrim(email),')') |
+        +---------------------------------------------------------------------+
+        | ERIN DUNN(ERIN.DUNN@sakilacustomer.org)                             |
+        | ERIK GUILLEN(ERIK.GUILLEN@sakilacustomer.org)                       |
+        | ERIC ROBERT(ERIC.ROBERT@sakilacustomer.org)                         |
+        +---------------------------------------------------------------------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 10.2}]
+        \textbf{Trim函数} MySQL除了支持RTrim()（正如刚才所见，它去掉串右边的空格），还支持LTrim()（去掉串左边的空格）以及Trim()（去掉串左右两边的空格）。   
+\end{orangebox}
+
+SELECT的拼接语句生成的字段没有新列的名字，因此我们可以通过别名来实现。
+\begin{redbox}[frametitle={Defination 10.2 别名（alias）}]
+        一个字段或值的替换名。别名用AS关键字赋予。(别名有时也称为导出列（derived column）)
+\end{redbox}
+
+那么可以把新生成的字段命名为contact，则有：
+\begin{listing}[H]
+	\caption{命名拼接字段语句}
+	\label{code:renameconcatfield}
+\begin{minted}{mysql}
+        SELECT Concat(RTrim(first_name),' ',RTrim(last_name),'(',RTrim(email),')')  AS contact
+        FROM customer 
+        WHERE first_name LIKE 'ERI_'
+        ORDER BY first_name DESC;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{命名拼接字段语句的结果}
+	\label{code:renameconcatfieldresult}
+\begin{minted}{mysql}
+        +-----------------------------------------------+
+        | contact                                       |
+        +-----------------------------------------------+
+        | ERIN DUNN(ERIN.DUNN@sakilacustomer.org)       |
+        | ERIK GUILLEN(ERIK.GUILLEN@sakilacustomer.org) |
+        | ERIC ROBERT(ERIC.ROBERT@sakilacustomer.org)   |
+        +-----------------------------------------------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{执行算术计算}
+我们可以检索id为7的公司年限和薪水的乘积：
+\begin{listing}[H]
+	\caption{执行算术计算语句}
+	\label{code:conductcalculationclause}
+\begin{minted}{mysql}
+        SELECT film_id,
+               rental_duration,
+               replacement_cost,
+               rental_duration*replacement_cost AS payment 
+        FROM film 
+        WHERE film_id=7;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行算术计算语句的结果}
+	\label{code:conductcalculationclauseresult}
+\begin{minted}{mysql}
+        +---------+-----------------+------------------+---------+
+        | film_id | rental_duration | replacement_cost | payment |
+        +---------+-----------------+------------------+---------+
+        |       7 |               6 |            28.99 |  173.94 |
+        +---------+-----------------+------------------+---------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{table}[H]
+        \caption{\textbf{MySQL算术操作符}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        操作符&说明\\
+        \midrule%第二道横线 
+        +       &       加                    \\
+        -      &       减                  \\
+        *     &       乘                  \\
+        /       &      除                   \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+\begin{orangebox}[frametitle={Tips 10.3.1 测试计算}]
+\begin{enumerate}
+        \item SELECT可以省略FROM子句以便简单地访问和处理表达式(SELECT3*2;将返回6)。
+        \item SELECTNow()利用Now()函数返回当前日期和时间。
+\end{enumerate}       
+\end{orangebox}
+
+\section{数据处理函数}
+
+\subsection{文本处理函数}
+
+可以运用文本处理函数返回字符串前3个字符：
+
+\begin{listing}[H]
+	\caption{执行文本处理函数语句}
+	\label{code:conducttextfunctionclause}
+\begin{minted}{mysql}
+        SELECT film_id, title, LEFT(title, 3) AS sutitle 
+        FROM film_text 
+        WHERE film_id REGEXP '^[1-5]7$';        
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行文本处理函数语句的结果}
+	\label{code:conducttextfunctionclauseresult}
+\begin{minted}{mysql}
+        +---------+-----------------+---------+
+        | film_id | title           | sutitle |
+        +---------+-----------------+---------+
+        |      17 | ALONE TRIP      | ALO     |
+        |      27 | ANONYMOUS HUMAN | ANO     |
+        |      37 | ARIZONA BANG    | ARI     |
+        |      47 | BABY HALL       | BAB     |
+        |      57 | BASIC EASY      | BAS     |
+        +---------+-----------------+---------+
+        5 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{table}[H]
+        \caption{\textbf{常用的文本处理函数}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        函数&说明\\
+        \midrule%第二道横线 
+        Left()&返回串左边的字符\\
+        Length()&返回串的长度\\
+        Locate()&找出串的一个子串\\
+        Lower()&将串转换为小写\\
+        LTrim()&去掉串左边的空格\\
+        Right()&返回串右边的字符\\
+        RTrim()&去掉串右边的空格\\
+        Soundex()&返回串的SOUNDEX值\\
+        SubString()&返回子串的字符\\
+        Upper()&将串转换为大写\\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+\begin{orangebox}[frametitle={Tips 11.1.1 SOUNDEX}]
+        SOUNDEX是一个将任何文本串转换为描述其语音表示的字母数字模式的算法。SOUNDEX考虑了类似的发音字符和音节，使得能对串进行发音比较而不是字母比较。    
+\end{orangebox}
+
+\subsection{日期和时间处理函数}
+
+DataBase中，日期和时间采用相应的数据类型和特殊的格式存储。
+
+\begin{orangebox}[frametitle={Tips 11.2.1 日期格式}]
+        \begin{enumerate}
+                \item 日期必须为格式yyyy-mm-dd。
+                \item 应该总是使用4位数字的年份，尽管MYSQL支持2位数字的年份，（MySQL处理00-69为2000-2069，处理70-99为1970-1999）。
+                \item 如果你想要的仅是日期，则使用Date()。
+        \end{enumerate}       
+\end{orangebox}
+
+\begin{table}[H]
+        \caption{\textbf{常用日期和时间处理函数}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        函数&说明\\
+        \midrule%第二道横线 
+        AddDate()    & 增加一个日期（天、周等） \\ 
+        AddTime()    & 增加一个时间（时、分等） \\ 
+        CurDate()    & 返回当前日期 \\ 
+        CurTime()    & 返回当前时间 \\ 
+        Date()       & 返回日期时间的日期部分 \\ 
+        DateDiff()   & 计算两个日期之差 \\ 
+        Date\_Add()  & 高度灵活的日期运算函数 \\ 
+        Date\_Format() & 返回一个格式化的日期或时间串 \\ 
+        Day()        & 返回一个日期的天数部分 \\ 
+        DayOfWeek()  & 对于一个日期，返回对应的星期几 \\ 
+        Hour()       & 返回一个时间的小时部分 \\ 
+        Minute()     & 返回一个时间的分钟部分 \\ 
+        Month()      & 返回一个日期的月份部分 \\ 
+        Now()        & 返回当前日期和时间 \\ 
+        Second()     & 返回一个时间的秒部分 \\ 
+        Time()       & 返回一个日期时间的时间部分 \\ 
+        Year()       & 返回一个日期的年份部分 \\ 
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+为了说明，现在可以检索address表中30分0秒至30分3秒生成的记录：
+
+\begin{listing}[H]
+	\caption{执行日期和时间处理函数语句}
+	\label{code:conductdatetimefunctionclause}
+\begin{minted}{mysql}
+        SELECT address,last_update 
+        FROM address 
+        WHERE Minute(last_update)=30 
+        AND Second(last_update) BETWEEN 0 AND 3;       
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行日期和时间处理函数语句的结果}
+	\label{code:conductdatetimefunctionclauseresult}
+\begin{minted}{mysql}
+        +-----------------------------+---------------------+
+        | address                     | last_update         |
+        +-----------------------------+---------------------+
+        | 757 Rustenburg Avenue       | 2014-09-25 22:30:01 |
+        | 1892 Nabereznyje Telny Lane | 2014-09-25 22:30:02 |
+        | 1368 Maracabo Boulevard     | 2014-09-25 22:30:03 |
+        | 368 Hunuco Boulevard        | 2014-09-25 22:30:03 |
+        | 486 Ondo Parkway            | 2014-09-25 22:30:02 |
+        +-----------------------------+---------------------+
+        5 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{数值处理函数}
+
+\begin{table}[H]
+        \caption{\textbf{常用数值处理函数}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        函数&说明\\
+        \midrule%第二道横线 
+        Abs()  & 返回一个数的绝对值     \\ 
+        Cos()  & 返回一个角度的余弦     \\ 
+        Exp()  & 返回一个数的指数值     \\ 
+        Mod()  & 返回除操作的余数       \\ 
+        Pi()   & 返回圆周率             \\ 
+        Rand() & 返回一个随机数         \\ 
+        Sin()  & 返回一个角度的正弦     \\ 
+        Sqrt() & 返回一个数的平方根     \\ 
+        Tan()  & 返回一个角度的正切     \\ 
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+\section{汇总数据}
+\subsection{聚集函数}
+
+\begin{redbox}[frametitle={Defination 12.1 聚集函数（aggregate function） }]
+        运行在行组上，计算和返回单个值的函数。
+\end{redbox}
+
+\begin{table}[H]
+        \caption{\textbf{SQL聚集函数}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        函数&说明\\
+        \midrule%第二道横线 
+        AVG()  & 返回某列的平均值     \\ 
+        COUNT()  & 返回某列的行数     \\ 
+        MAX() & 返回某列的最大值    \\ 
+        MIN()  & 返回某列的最小值       \\ 
+        SUM()  & 返回某列值之和             \\ 
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table}  
+
+\subsection{AVG()函数}
+
+看以下SQL语句：
+\begin{listing}[H]
+	\caption{执行AVG函数语句}
+	\label{code:avgfunctionclause}
+\begin{minted}{mysql}
+        SELECT AVG(amount) AS avg_amount FROM payment;      
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行AVG函数语句的结果}
+	\label{code:avgfunctionclauseresult}
+\begin{minted}{mysql}
+        +------------+
+        | avg_amount |
+        +------------+
+        |   4.201356 |
+        +------------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 12.2.1 AVG()函数注意事项}]
+        \begin{enumerate}
+                \item AVG()只能用来确定特定数值列的平均值，而且列名必须作为函数参数给出。
+                \item AVG()函数忽略列值为NULL的行。
+        \end{enumerate}       
+\end{orangebox}
+
+
+\subsection{COUNT()函数}
+
+看以下SQL语句：
+\begin{listing}[H]
+	\caption{执行COUNT函数语句}
+	\label{code:countfunctionclause}
+\begin{minted}{mysql}
+        SELECT COUNT(amount) AS count_amount FROM payment;      
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行COUNT函数语句的结果}
+	\label{code:countfunctionclauseresult}
+\begin{minted}{mysql}
+        +--------------+
+        | count_amount |
+        +--------------+
+        |        16044 |
+        +--------------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 12.3.1 COUNT()函数注意事项}]
+        如果指定列名，则指定列的值为空的行被COUNT()函数忽略，但如果COUNT()函数中用的是星号（*），则不忽略。
+\end{orangebox}
+
+\subsection{MAX()函数}
+
+看以下SQL语句：
+\begin{listing}[H]
+	\caption{执行MAX函数语句}
+	\label{code:maxfunctionclause}
+\begin{minted}{mysql}
+        SELECT MAX(amount) AS max_amount FROM payment;      
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行MAX函数语句的结果}
+	\label{code:maxfunctionclauseresult}
+\begin{minted}{mysql}
+        +------------+
+        | max_amount |
+        +------------+
+        |      11.99 |
+        +------------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 12.3.1 MAX()函数注意事项}]
+\begin{enumerate}
+        \item MySQL允许将它用来返回任意列中的最大值，包括返回文本列中的最大值。
+        \item MAX()函数忽略列值为NULL的行。
+\end{enumerate}    
+\end{orangebox}
+
+\subsection{MIN()函数}
+
+MIN()函数与MAX()函数类似，具体可以看以下例子：
+
+\begin{listing}[H]
+	\caption{执行MIN函数语句}
+	\label{code:minfunctionclause}
+\begin{minted}{mysql}
+        SELECT MIN(amount) AS min_amount FROM payment;      
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行MIN函数语句的结果}
+	\label{code:minfunctionclauseresult}
+\begin{minted}{mysql}
+        +------------+
+        | min_amount |
+        +------------+
+        |       0.00 |
+        +------------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+
+\subsection{SUM()函数}
+
+\begin{listing}[H]
+	\caption{执行SUM函数语句}
+	\label{code:sumfunctionclause}
+\begin{minted}{mysql}
+        SELECT SUM(amount) AS min_amount FROM payment WHERE payment_id REGEXP '^[1-7]7$';     
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{执行SUM函数语句的结果}
+	\label{code:combinationaggregatefunctionclauseresult}
+\begin{minted}{mysql}
+        +------------+
+        | min_amount |
+        +------------+
+        |      31.93 |
+        +------------+
+        1 row in set (0.01 sec)
+\end{minted}
+\end{listing}
+
+\subsection{组合聚集函数}
+
+可以把之前的语句组合起来：
+
+\begin{listing}[H]
+	\caption{组合聚集函数语句}
+	\label{code:combinationaggregatefunctionclause}
+\begin{minted}{mysql}
+        SELECT AVG(amount) AS avg_amount,
+               COUNT(amount) AS count_amount,
+               MAX(amount) AS max_amount,
+               MIN(amount) AS min_amount
+        FROM payment;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{组合聚集函数语句的结果}
+	\label{code:sumfunctionclauseresult}
+\begin{minted}{mysql}
+        +------------+--------------+------------+------------+
+        | avg_amount | count_amount | max_amount | min_amount |
+        +------------+--------------+------------+------------+
+        |   4.201356 |        16044 |      11.99 |       0.00 |
+        +------------+--------------+------------+------------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\section{分组数据}
+\subsection{创建分组}
+
+分组是在SELECT语句的GROUP BY子句中建立的，我们可以看两个store中的inventory数量：
+\begin{listing}[H]
+	\caption{创建分组语句}
+	\label{code:setgroupclause}
+\begin{minted}{mysql}
+        SELECT store_id,COUNT(inventory_id) AS num_inevntory FROM inventory GROUP BY store_id;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{创建分组语句的结果}
+	\label{code:setgroupclauseresult}
+\begin{minted}{mysql}
+        +----------+---------------+
+        | store_id | num_inevntory |
+        +----------+---------------+
+        |        1 |          2270 |
+        |        2 |          2311 |
+        +----------+---------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 13.1.1 GROUP BY子句注意事项}]
+        \begin{enumerate}
+                \item GROUP BY子句可以包含任意数目的列，这使得能对分组进行嵌套。
+                \item 在GROUP BY子句中嵌套了分组，数据将在最后规定的分组上进行汇总。
+                \item GROUP BY子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。
+                \item 如果在SELECT中使用表达式，则必须在GROUP BY子句中指定相同的表达式。不能使用别名。
+                \item 除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。
+                \item 分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值，它们将分为一组。
+                \item GROUP BY子句在WHERE子句之后，ORDER BY子句之前。
+        \end{enumerate}    
+\end{orangebox}
+
+使用WITH ROLLUP可以得到分组汇总的值：
+
+\begin{listing}[H]
+	\caption{使用WITH ROLLUP语句}
+	\label{code:usewithrillupclause}
+\begin{minted}{mysql}
+        SELECT store_id,COUNT(inventory_id) AS num_inevntory 
+        FROM inventory 
+        GROUP BY store_id 
+        WITH ROLLUP;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用WITH ROLLUP语句的结果}
+	\label{code:usewithrillupclauseresult}
+\begin{minted}{mysql}
+        +----------+---------------+
+        | store_id | num_inevntory |
+        +----------+---------------+
+        |        1 |          2270 |
+        |        2 |          2311 |
+        |     NULL |          4581 |
+        +----------+---------------+
+        3 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{过滤分组}
+
+\begin{orangebox}[frametitle={Tips 13.2.1 HAVING注意事项}]
+        \begin{enumerate}
+                \item WHERE过滤指定的是行而不是分组。
+                \item HAVING支持所有WHERE操作符。
+                \item WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤。
+        \end{enumerate}    
+\end{orangebox}
+
+可以看到以下的SQL语句：
+
+\begin{listing}[H]
+	\caption{使用过滤分组语句}
+	\label{code:usehavingclause}
+\begin{minted}{mysql}
+        SELECT film_id,COUNT(inventory_id) AS num_inevntory 
+        FROM inventory GROUP BY film_id 
+        HAVING COUNT(inventory_id) = 7 
+        And film_id REGEXP '^[1-9]9.$';
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用过滤分组语句的结果}
+	\label{code:usehavingclauseresult}
+\begin{minted}{mysql}
+        +---------+---------------+
+        | film_id | num_inevntory |
+        +---------+---------------+
+        |     391 |             7 |
+        |     397 |             7 |
+        |     590 |             7 |
+        |     698 |             7 |
+        |     790 |             7 |
+        |     890 |             7 |
+        |     891 |             7 |
+        |     892 |             7 |
+        |     895 |             7 |
+        |     993 |             7 |
+        +---------+---------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{分组和排序}
+
+\begin{table}[H]
+        \caption{ \textbf{ORDER BY 与 GROUP BY 的对比}}
+        \centering
+        \begin{tabular}{p{4cm}p{4cm}}
+            \toprule
+            \textbf{ORDER BY} & \textbf{GROUP BY} \\ 
+            \midrule
+            排序产生的输出 & 分组行，但输出可能不是分组的顺序 \\ 
+            任意列都可以使用（甚至非选择的列也可以使用） & 只可能使用选择列或表达式列，而且必须使用每个选择列表达式 \\ 
+            不一定需要 & 如果与聚集函数一起使用（或表达式），则必须使用 \\ 
+            \bottomrule
+        \end{tabular}
+\end{table}
+     
+现在将上面那个例子用降序输出：
+
+\begin{listing}[H]
+	\caption{使用过滤分组降序语句}
+	\label{code:usehavingdescclause}
+\begin{minted}{mysql}
+        SELECT film_id,COUNT(inventory_id) AS num_inevntory 
+        FROM inventory GROUP BY film_id 
+        HAVING COUNT(inventory_id) = 7 
+        And film_id REGEXP '^[1-9]9.$'
+        ORDER BY film_id DESC;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用过滤分组语句的结果}
+	\label{code:usehavingdescclauseresult}
+\begin{minted}{mysql}
+        +---------+---------------+
+        | film_id | num_inevntory |
+        +---------+---------------+
+        |     993 |             7 |
+        |     895 |             7 |
+        |     892 |             7 |
+        |     891 |             7 |
+        |     890 |             7 |
+        |     790 |             7 |
+        |     698 |             7 |
+        |     590 |             7 |
+        |     397 |             7 |
+        |     391 |             7 |
+        +---------+---------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{SELECT子句顺序}
+
+\begin{table}[H]
+        \caption{\textbf{SQL聚集函数}}%标题
+        \centering%把表居中
+        \begin{tabular}{ccl}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        \textbf{子句} & \textbf{说明} & \textbf{是否必须使用} \\
+        \midrule
+        SELECT & 要返回的列或表达式 & 是 \\
+        FROM & 从中检索数据的表 & 仅在从表选择数据时使用 \\
+        WHERE & 行级过滤 & 否 \\
+        GROUP BY & 分组说明 & 仅在按组计算聚集时使用 \\
+        HAVING & 组级过滤 & 否 \\
+        ORDER BY & 输出排序顺序 & 否 \\
+        LIMIT & 要检索的行数 & 否 \\
+        \bottomrule
+        \end{tabular}
+\end{table}  
+
+\section{使用子查询}
+
+\subsection{利用子查询进行过滤}
+
+\begin{redbox}[frametitle={Defination 14.1.1 查询（query）}]
+        任何SQL语句都是查询。但此术语一般指SELECT语句。
+\end{redbox}
+
+\begin{redbox}[frametitle={Defination 14.1.2 子查询（subquery）}]
+        嵌套在其他查询中的查询。
+\end{redbox}
+
+例如，我想知道顾客id为17、27、37、47、57、67、77、87、97的地址，但是customer表中只有地址的id，那么我们就可以采用子查询：
+
+\begin{listing}[H]
+	\caption{使用子查询的语句}
+	\label{code:usesubqueryclause}
+\begin{minted}{mysql}
+        SELECT address 
+        FROM address 
+        WHERE address_id IN ( SELECT address_id 
+                              FROM customer 
+                              WHERE customer_id REGEXP '^[1-9]7$');
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用子查询的语句的结果}
+	\label{code:usesubqueryclauseresult}
+\begin{minted}{mysql}
+        +------------------------+
+        | address                |
+        +------------------------+
+        | 270 Toulon Boulevard   |
+        | 217 Botshabelo Place   |
+        | 1440 Fukuyama Loop     |
+        | 686 Garland Manor      |
+        | 943 Tokat Street       |
+        | 1586 Guaruj Place      |
+        | 1692 Ede Loop          |
+        | 1740 Portoviejo Avenue |
+        | 1599 Plock Drive       |
+        +------------------------+
+        9 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 14.1.1 子查询注意事项}]
+        \begin{enumerate}
+                \item 在WHERE子句中使用子查询，该保证SELECT语句具有与WHERE子句中相同数目的列。
+                \item 虽然子查询一般与IN操作符结合使用，但也可以用于测试等于（=）、不等于（<>）等。
+                \item 子查询不算一种特别有效的方法，尽量不要用。
+        \end{enumerate}    
+\end{orangebox}
+
+\subsection{作为计算字段使用子查询}
+
+例如，我们可以执行把每个staff经手的订单加起来：
+
+\begin{listing}[H]
+	\caption{作为计算字段使用子查询的语句}
+	\label{code:asculculationusesubqueryclause}
+\begin{minted}{mysql}
+        SELECT staff_id,first_name,last_name,(SELECT COUNT(amount) 
+                                              FROM payment 
+                                              WHERE payment.staff_id = staff.staff_id ) AS sum_payment 
+        FROM staff 
+        ORDER BY staff_id;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{作为计算字段使用子查询的语句的结果}
+	\label{code:asculculatiousesubqueryclauseresult}
+\begin{minted}{mysql}
+        +----------+------------+-----------+-------------+
+        | staff_id | first_name | last_name | sum_payment |
+        +----------+------------+-----------+-------------+
+        |        1 | Mike       | Hillyer   |        8054 |
+        |        2 | Jon        | Stephens  |        7990 |
+        +----------+------------+-----------+-------------+
+        2 rows in set (0.01 sec)
+\end{minted}
+\end{listing}
+
+\begin{redbox}[frametitle={Defination 14.2.1 相关子查询（correlated subquery）}]
+        涉及外部查询的子查询。
+\end{redbox}
+
+其中子查询的WHERE语句就是相关子查询，任何时候只要列名可能有多义性，就必须使用这种语法（表名和列名由一个句点分隔）。如果不采用这种完全限定列名，那么MySQL就会把payment表中staff\_id与自身比较，从而出错：
+\begin{listing}[H]
+	\caption{作为计算字段错误使用子查询的语句}
+	\label{code:asculculationusesubqueryfaultclause}
+\begin{minted}{mysql}
+        SELECT staff_id,first_name,last_name,(SELECT COUNT(amount) 
+                                              FROM payment 
+                                              WHERE staff_id = staff_id ) AS sum_payment 
+        FROM staff 
+        ORDER BY staff_id;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{作为计算字段错误使用子查询的语句的结果}
+	\label{code:asculculatiousesubqueryfaultclauseresult}
+\begin{minted}{mysql}
+        +----------+------------+-----------+-------------+
+        | staff_id | first_name | last_name | sum_payment |
+        +----------+------------+-----------+-------------+
+        |        1 | Mike       | Hillyer   |       16044 |
+        |        2 | Jon        | Stephens  |       16044 |
+        +----------+------------+-----------+-------------+
+        2 rows in set (0.01 sec)
+\end{minted}
+\end{listing}
+
+\section{联结表}
+\subsection{联结}
+
+\begin{redbox}[frametitle={Defination 15.1.1 外键（foreign key）}]
+        外键为某个表中的一列，它包含另一个表的主键值，定义了两个表之间的关系。
+\end{redbox}
+
+\begin{redbox}[frametitle={Defination 15.1.2 可伸缩性（scale）}]
+        能够适应不断增加的工作量而不失败。设计良好的数据库或应用程序称之为可伸缩性好（scale well）。
+\end{redbox}
+
+\subsection{等值联结（equijoin）}
+
+例如，可以联结address表和city表,输出前十个address和city的名称：
+
+\begin{listing}[H]
+        \caption{创建联结的语句}
+	\label{code:createjoinclause}
+\begin{minted}{mysql}
+        SELECT address,city,district 
+        FROM address,city 
+        WHERE address.city_id = city.city_id 
+        ORDER BY address,city 
+        LIMIT 10;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{创建联结的语句的结果}
+	\label{code:createjoinclauseresult}
+\begin{minted}{mysql}
+        +--------------------------------+--------------+--------------+
+        | address                        | city         | district     |
+        +--------------------------------+--------------+--------------+
+        | 1 Valle de Santiago Avenue     | Brindisi     | Apulia       |
+        | 1001 Miyakonojo Lane           | Taizz        | Taizz        |
+        | 1002 Ahmadnagar Manor          | Huixquilucan | Mxico        |
+        | 1003 Qinhuangdao Street        | Purwakarta   | West Java    |
+        | 1006 Santa Brbara dOeste Manor | Owo          | Ondo & Ekiti |
+        | 1009 Zanzibar Lane             | Arecibo      | Arecibo      |
+        | 1010 Klerksdorp Way            | Graz         | Steiermark   |
+        | 1013 Tabuk Boulevard           | Kanchrapara  | West Bengali |
+        | 1014 Loja Manor                | Ambattur     | Tamil Nadu   |
+        | 1016 Iwakuni Street            | Kingstown    | St George    |
+        +--------------------------------+--------------+--------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 15.2.1 、注意完全限定列名}]
+        \begin{enumerate}
+                \item 在引用的列可能出现二义性时，必须使用完全限定列名（用一个点分隔的表名和列名）。
+                \item 在联结两个表时，你实际上做的是将第一个表中的每一行与第二个表中的每一行配对。WHERE子句作为过滤条件，它只包含那些匹配给定条件（这里是联结条件）的行。
+                \item 应该保证所有联结都有WHERE子句，否则MySQL将返回比想要的数据多得多的数据。
+                \item 有时我们会听到返回称为叉联结（cross join）的笛卡儿积的联结类型。
+        \end{enumerate}
+\end{orangebox}        
+        
+\begin{redbox}[frametitle={Defination 15.2.1 笛卡儿积（cartesian product）}]
+        由没有联结条件的表关系返回的结果为笛卡儿积。检索出的行的数目将是第一个表中的行数乘以第二个表中的行数。
+\end{redbox}
+
+下面用staff表和address表来演示以下没有完全限定列名和有限定列名的情况：
+\begin{listing}[H]
+        \caption{没有使用完全限定列名的创建联结的语句}
+	\label{code:faultcartesiancreatejoinclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name,address 
+        FROM staff,address 
+        ORDER BY address,first_name 
+        LIMIT 30;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{没有使用完全限定列名的创建联结的语句的结果}
+	\label{code:faultcartesiancreatejoinclauseresult}
+\begin{minted}{mysql}
+        +------------+-----------+--------------------------------+
+        | first_name | last_name | address                        |
+        +------------+-----------+--------------------------------+
+        | Jon        | Stephens  | 1 Valle de Santiago Avenue     |
+        | Mike       | Hillyer   | 1 Valle de Santiago Avenue     |
+        | Jon        | Stephens  | 1001 Miyakonojo Lane           |
+        | Mike       | Hillyer   | 1001 Miyakonojo Lane           |
+        | Jon        | Stephens  | 1002 Ahmadnagar Manor          |
+        | Mike       | Hillyer   | 1002 Ahmadnagar Manor          |
+        | Jon        | Stephens  | 1003 Qinhuangdao Street        |
+        | Mike       | Hillyer   | 1003 Qinhuangdao Street        |
+        | Jon        | Stephens  | 1006 Santa Brbara dOeste Manor |
+        | Mike       | Hillyer   | 1006 Santa Brbara dOeste Manor |
+        | Jon        | Stephens  | 1009 Zanzibar Lane             |
+        | Mike       | Hillyer   | 1009 Zanzibar Lane             |
+        | Jon        | Stephens  | 1010 Klerksdorp Way            |
+        | Mike       | Hillyer   | 1010 Klerksdorp Way            |
+        | Jon        | Stephens  | 1013 Tabuk Boulevard           |
+        | Mike       | Hillyer   | 1013 Tabuk Boulevard           |
+        | Jon        | Stephens  | 1014 Loja Manor                |
+        | Mike       | Hillyer   | 1014 Loja Manor                |
+        | Jon        | Stephens  | 1016 Iwakuni Street            |
+        | Mike       | Hillyer   | 1016 Iwakuni Street            |
+        | Jon        | Stephens  | 102 Chapra Drive               |
+        | Mike       | Hillyer   | 102 Chapra Drive               |
+        | Jon        | Stephens  | 1027 Banjul Place              |
+        | Mike       | Hillyer   | 1027 Banjul Place              |
+        | Jon        | Stephens  | 1027 Songkhla Manor            |
+        | Mike       | Hillyer   | 1027 Songkhla Manor            |
+        | Jon        | Stephens  | 1029 Dzerzinsk Manor           |
+        | Mike       | Hillyer   | 1029 Dzerzinsk Manor           |
+        | Jon        | Stephens  | 1031 Daugavpils Parkway        |
+        | Mike       | Hillyer   | 1031 Daugavpils Parkway        |
+        +------------+-----------+--------------------------------+
+        30 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+最终实际生成了1206条结果，显然staff有两条记录，我们可以查询一下address的行数：
+
+\begin{listing}[H]
+        \caption{查询staff行数的语句}
+	\label{code:selectstaffrowclause}
+\begin{minted}{mysql}
+        SELECT COUNT(address) AS num_address FROM address;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{查询staff行数的语句的结果}
+	\label{code:selectstaffrowclauseresult}
+\begin{minted}{mysql}
+        +-------------+
+        | num_address |
+        +-------------+
+        |         603 |
+        +-------------+
+        1 row in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+显然，staff有603条，那么所谓笛卡尔积就是2*603=1206条，显然是不对的，下面展示正确的SQL语句：
+
+\begin{listing}[H]
+        \caption{使用完全限定列名的创建联结的语句}
+	\label{code:rightcartesiancreatejoinclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name,address 
+        FROM staff,address 
+        WHERE staff.address_id = address.address_id 
+        ORDER BY first_name,last_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用完全限定列名的语句的结果}
+	\label{code:rightcartesiancreatejoinclauseresult}
+\begin{minted}{mysql}
+        +------------+-----------+----------------------+
+        | first_name | last_name | address              |
+        +------------+-----------+----------------------+
+        | Jon        | Stephens  | 1411 Lillydale Drive |
+        | Mike       | Hillyer   | 23 Workhaven Lane    |
+        +------------+-----------+----------------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{内部联结}
+
+等值联结（equijoin）是基于两个表之间的相等测试。这种联结也称为内部联结。因此我们可以用下面的语句返回和上面例子同样的结果：
+\begin{listing}[H]
+        \caption{使用内部联结的语句}
+	\label{code:useinnerjoinclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name,address 
+        FROM staff INNER JOIN address 
+        ON staff.address_id = address.address_id 
+        ORDER BY first_name,last_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用内部联结的语句的结果}
+	\label{code:useinnerjoinclauseresult}
+\begin{minted}{mysql}
+        +------------+-----------+----------------------+
+        | first_name | last_name | address              |
+        +------------+-----------+----------------------+
+        | Jon        | Stephens  | 1411 Lillydale Drive |
+        | Mike       | Hillyer   | 23 Workhaven Lane    |
+        +------------+-----------+----------------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{联结多个表}
+
+\begin{listing}[H]
+        \caption{联结多个表的语句}
+	\label{code:usemultijoinclause}
+\begin{minted}{mysql}
+        SELECT title, name 
+        FROM film_category, film, category 
+        WHERE film_category.film_id = film.film_id 
+        AND film_category.category_id = category.category_id 
+        AND film_category.film_id REGEXP '^[1-9]7$' 
+        ORDER BY title, name;
+        
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用内部联结的语句的结果}
+	\label{code:usemultijoinclauseresult}
+\begin{minted}{mysql}
+        +-------------------+----------+
+        | title             | name     |
+        +-------------------+----------+
+        | ALONE TRIP        | Music    |
+        | ANONYMOUS HUMAN   | Sports   |
+        | ARIZONA BANG      | Classics |
+        | BABY HALL         | Foreign  |
+        | BASIC EASY        | Travel   |
+        | BERETS AGENT      | Action   |
+        | BIRDS PERDITION   | New      |
+        | BOONDOCK BALLROOM | Travel   |
+        | BRIDE INTRIGUE    | Action   |
+        +-------------------+----------+
+        9 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\section{创建高级联结}
+\subsection{使用表别名}
+
+仍然采用上面的例子进行输出：
+
+\begin{listing}[H]
+        \caption{使用表别名的语句}
+	\label{code:usetableasclause}
+\begin{minted}{mysql}
+        SELECT title, name 
+        FROM film_category AS a, film AS b, category AS c
+        WHERE a.film_id = b.film_id 
+        AND a.category_id = c.category_id 
+        AND a.film_id REGEXP '^[1-9]7$' 
+        ORDER BY title, name;
+        
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用表别名的语句的结果}
+	\label{code:usetableasclauseresult}
+\begin{minted}{mysql}
+        +-------------------+----------+
+        | title             | name     |
+        +-------------------+----------+
+        | ALONE TRIP        | Music    |
+        | ANONYMOUS HUMAN   | Sports   |
+        | ARIZONA BANG      | Classics |
+        | BABY HALL         | Foreign  |
+        | BASIC EASY        | Travel   |
+        | BERETS AGENT      | Action   |
+        | BIRDS PERDITION   | New      |
+        | BOONDOCK BALLROOM | Travel   |
+        | BRIDE INTRIGUE    | Action   |
+        +-------------------+----------+
+        9 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 16.1.1 注意表别名}]
+        表别名只在查询执行中使用。与列别名不一样，表别名不返回到客户机。
+\end{orangebox}   
+
+\subsection{自联结}
+
+可以看以下例子，假如id为577的customer反映有买的东西有问题，现在需要找到这个顾客买的inventory,看看其他买这些东西的顾客是否有问题：
+
+\begin{listing}[H]
+        \caption{使用自联结的语句}
+	\label{code:useselfjoinclause}
+\begin{minted}{mysql}
+        SELECT DISTINCT r1.customer_id 
+        FROM rental AS r1,rental AS r2 
+        WHERE r1.inventory_id = r2.inventory_id 
+        AND r2.customer_id = 577 
+        ORDER BY r1.customer_id
+        LIMIT 10; 
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用自联结的语句的结果}
+	\label{code:useselfjoinclauseresult}
+\begin{minted}{mysql}
+        +-------------+
+        | customer_id |
+        +-------------+
+        |          11 |
+        |          14 |
+        |          23 |
+        |          26 |
+        |          34 |
+        |          37 |
+        |          44 |
+        |          46 |
+        |          50 |
+        |          51 |
+        +-------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 16.2.1 用自联结而不用子查询 }]
+        自联结虽然最终的结果与子查询语句是相同的，但有时候处理联结远比处理子查询快得多。
+\end{orangebox} 
+
+\subsection{自然联结}
+
+对内部联结的例子重新用自然联结写：
+\begin{listing}[H]
+        \caption{使用自然联结的语句}
+	\label{code:usenatualjoinclause}
+\begin{minted}{mysql}
+        SELECT s.first_name,s.last_name,a.address 
+        FROM staff AS s, address AS a
+        WHERE s.address_id = a.address_id 
+        ORDER BY s.first_name,s.last_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用自然联结的语句的结果}
+	\label{code:usenatualjoinclauseresult}
+\begin{minted}{mysql}
+        +------------+-----------+----------------------+
+        | first_name | last_name | address              |
+        +------------+-----------+----------------------+
+        | Jon        | Stephens  | 1411 Lillydale Drive |
+        | Mike       | Hillyer   | 23 Workhaven Lane    |
+        +------------+-----------+----------------------+
+        2 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+自然联结只能选择那些唯一的列。这一般是通过对表使用通配符（SELECT *），对所有其他表的列使用明确的子集来完成的,迄今为止我们建立的每个内部联结都是自然联结，
+
+\subsection{外部联结}
+
+\begin{redbox}[frametitle={Defination 16.3.1 外部联结}]
+        联结包含了那些在相关表中没有关联行的行。
+\end{redbox}
+
+外部联结主要是OUTER LEFT/RIGHT JOIN，用哪边就是输出所有行的表,例如，所有的电影都是英文的，现在我要检索出所有语言，就需要运用外联结：
+
+\begin{listing}[H]
+        \caption{使用外联结的语句}
+	\label{code:useouterjoinclause}
+\begin{minted}{mysql}
+        SELECT l.name,f.title 
+        FROM language AS l LEFT OUTER JOIN film AS f 
+        ON l.language_id = f.language_id 
+        ORDER BY l.language_id DESC 
+        LIMIT 10;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用外联结的语句的结果}
+	\label{code:useouterjoinclauseresult}
+\begin{minted}{mysql}
+        +----------+-------------------+
+        | name     | title             |
+        +----------+-------------------+
+        | German   | NULL              |
+        | French   | NULL              |
+        | Mandarin | NULL              |
+        | Japanese | NULL              |
+        | Italian  | NULL              |
+        | English  | ZOOLANDER FICTION |
+        | English  | ZHIVAGO CORE      |
+        | English  | YOUNG LANGUAGE    |
+        | English  | YENTL IDAHO       |
+        | English  | WRONG BEHAVIOR    |
+        +----------+-------------------+
+        10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\subsection{使用带聚集函数的联结}
+
+\begin{listing}[H]
+        \caption{使用带聚集函数的语句}
+	\label{code:useaggregatefunctionclause}
+\begin{minted}{mysql}
+        SELECT l.name,COUNT(f.film_id) AS num_film 
+        FROM language AS l LEFT OUTER  JOIN film AS f 
+        ON l.language_id = f.language_id 
+        GROUP BY l.language_id 
+        ORDER BY l.language_id;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用带聚集函数的语句的结果}
+	\label{code:useaggregatefunctionclauseresult}
+\begin{minted}{mysql}
+        +----------+----------+
+        | name     | num_film |
+        +----------+----------+
+        | English  |     1000 |
+        | Italian  |        0 |
+        | Japanese |        0 |
+        | Mandarin |        0 |
+        | French   |        0 |
+        | German   |        0 |
+        +----------+----------+
+        6 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 16.5.1 外联结注意事项}]
+        \begin{enumerate}
+                \item 没有*=操作符，MySQL不支持简化字符*=和=*的使用。
+                \item 左右联结可以相互转换。
+        \end{enumerate}       
+\end{orangebox}
+
+\section{组合查询}
+\subsection{组合查询}
+
+\begin{redbox}[frametitle={Defination 17.1.1 复合查询（compound query）或并（union）}]
+        执行多个查询（多条SELECT语句），并将结果作为单个查询结果集返回。
+\end{redbox}
+
+\begin{orangebox}[frametitle={Tips 17.1.2 组合查询注意事项}]
+        组合相同表的两个查询完成的工作与具有多个WHERE子句条件的单条查询完成的工作相同。   
+\end{orangebox}
+\subsection{使用UNION}
+
+可以看以下例子，分别对address\_id和customer\_id施加条件：
+
+
+\begin{listing}[H]
+        \caption{使用UNION的语句}
+	\label{code:useunionclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name 
+        FROM customer 
+        WHERE address_id REGEXP '^[1-5]7$' 
+        UNION SELECT first_name,last_name 
+        FROM customer 
+        WHERE customer_id LIKE '7_' 
+        ORDER BY first_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用UNION的语句的结果}
+	\label{code:useunionclauseresult}
+\begin{minted}{mysql}
+        +------------+-----------+
+        | first_name | last_name |
+        +------------+-----------+
+        | ANNA       | HILL      |
+        | BEVERLY    | BROOKS    |
+        | CHRISTINA  | RAMIREZ   |
+        | CHRISTINE  | ROBERTS   |
+        | DENISE     | KELLY     |
+        | HEATHER    | MORRIS    |
+        | IRENE      | PRICE     |
+        | JANE       | BENNETT   |
+        | KAREN      | JACKSON   |
+        | KATHY      | JAMES     |
+        | LORI       | WOOD      |
+        | RACHEL     | BARNES    |
+        | SARAH      | LEWIS     |
+        | TAMMY      | SANDERS   |
+        | THERESA    | WATSON    |
+        +------------+-----------+
+        15 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+上面的结果可以用多条WHERE子句完成:
+\begin{listing}[H]
+        \caption{使用WHERE复现的语句}
+	\label{code:usewhererefindclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name 
+        FROM customer 
+        WHERE address_id REGEXP '^[1-5]7$' 
+        OR customer_id LIKE '7_' 
+        ORDER BY first_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用WHERE复现的语句的结果}
+	\label{code:usewhererefindclauseresult}
+\begin{minted}{mysql}
+        +------------+-----------+
+        | first_name | last_name |
+        +------------+-----------+
+        | ANNA       | HILL      |
+        | BEVERLY    | BROOKS    |
+        | CHRISTINA  | RAMIREZ   |
+        | CHRISTINE  | ROBERTS   |
+        | DENISE     | KELLY     |
+        | HEATHER    | MORRIS    |
+        | IRENE      | PRICE     |
+        | JANE       | BENNETT   |
+        | KAREN      | JACKSON   |
+        | KATHY      | JAMES     |
+        | LORI       | WOOD      |
+        | RACHEL     | BARNES    |
+        | SARAH      | LEWIS     |
+        | TAMMY      | SANDERS   |
+        | THERESA    | WATSON    |
+        +------------+-----------+
+        15 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 17.2.1 UNION规则}]
+        \begin{enumerate}
+                \item UNION必须由两条或两条以上的SELECT语句组成，语句之间用关键字UNION分隔。
+                \item UNION中的每个查询必须包含相同的列、表达式或聚集函数（不过各个列不需要以相同的次序列出）。
+                \item 列数据类型必须兼容：类型不必完全相同，但必须是DBMS可以隐含地转换的类型。
+        \end{enumerate}       
+\end{orangebox}
+
+\subsection{包含或取消重复的行}
+
+\begin{orangebox}[frametitle={Tips 17.3.1 UNION包含或取消重复的行}]
+        \begin{enumerate}
+                \item UNION从查询结果集中自动去除了重复的行。
+                \item 如果想返回所有匹配行，可使用UNION ALL而不是UNION。
+        \end{enumerate}       
+\end{orangebox}
+
+我将上面例子改一下，用下面的语句反应出有重复行和没有重复行的区别：
+
+\begin{listing}[H]
+        \caption{使用UNION不包含重复行的语句}
+	\label{code:useunionunrepeatclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name 
+        FROM customer 
+        WHERE address_id REGEXP '^[1-5]7$' 
+        UNION SELECT first_name,last_name 
+        FROM customer 
+        WHERE customer_id LIKE '_3' 
+        ORDER BY first_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用UNION不包含重复行的语句的结果}
+	\label{code:useunionunrepeatclauseresult}
+\begin{minted}{mysql}
+        +------------+------------+
+        | first_name | last_name  |
+        +------------+------------+
+        | ANNA       | HILL       |
+        | ASHLEY     | RICHARDSON |
+        | BEVERLY    | BROOKS     |
+        | CHRISTINE  | ROBERTS    |
+        | HEATHER    | MORRIS     |
+        | KAREN      | JACKSON    |
+        | LOUISE     | JENKINS    |
+        | PHYLLIS    | FOSTER     |
+        | SARAH      | LEWIS      |
+        +------------+------------+
+        9 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+下面是包含重复行的：
+
+\begin{listing}[H]
+        \caption{使用UNION包含重复行的语句}
+	\label{code:useunionrepeatclause}
+\begin{minted}{mysql}
+        SELECT first_name,last_name 
+        FROM customer 
+        WHERE address_id REGEXP '^[1-5]7$' 
+        UNION ALL SELECT first_name,last_name 
+        FROM customer 
+        WHERE customer_id LIKE '_3' 
+        ORDER BY first_name;
+\end{minted}
+\end{listing}
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用UNION包含重复行的语句的结果}
+	\label{code:useunionrepeatclauseresult}
+\begin{minted}{mysql}
+        +------------+------------+
+        | first_name | last_name  |
+        +------------+------------+
+        | ANNA       | HILL       |
+        | ANNA       | HILL       |
+        | ASHLEY     | RICHARDSON |
+        | BEVERLY    | BROOKS     |
+        | CHRISTINE  | ROBERTS    |
+        | CHRISTINE  | ROBERTS    |
+        | HEATHER    | MORRIS     |
+        | HEATHER    | MORRIS     |
+        | KAREN      | JACKSON    |
+        | KAREN      | JACKSON    |
+        | LOUISE     | JENKINS    |
+        | PHYLLIS    | FOSTER     |
+        | SARAH      | LEWIS      |
+        | SARAH      | LEWIS      |
+        +------------+------------+
+        14 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+显然多了5条记录，这就是UNION ALL的作用。
+
+\subsection{对组合查询结果排序}
+
+\begin{orangebox}[frametitle={Tips 17.4.1 组合查询结果排序注意事项}]
+        在用UNION组合查询时，只能使用一条ORDER BY子句，它必须出现在最后一条SELECT语句之后。
+\end{orangebox}
+
+本章所有的语句的例子都使用了ORDER BY，这里就不赘述举例了。
+
+\begin{orangebox}[frametitle={Tips 17.4.2 组合不同的表}]
+        使用UNION的组合查询可以应用不同的表，而不仅仅用于相同的表。
+\end{orangebox}
+
+\section{全文本搜索}
+\subsection{启用全文本搜索支持}
+
+一般在创建表时启用全文本搜索.如下所示：
+
+\begin{listing}[H]
+        \caption{启用全文本搜索支持的语句}
+	\label{code:usefulltextclause}
+\begin{minted}{mysql}
+        CREATE TABLE productnotes
+        (
+                note_id int                             NOT NULL AUTO INCREMENT,
+                prod_id char(10)                        NOT NULL,
+                note_date datetime                      NOT NULL,
+                note_text text                          NULL,
+                PRIMARY KEY(note_id),
+                FULLTEXT(note_text)
+        )ENGINE=MYISAM:
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 18.1.1 FULLTEXT注意事项}]
+        \begin{enumerate}
+                \item 可以在创建表时指定FULLTEXT，或者在稍后指定（在这种情况下所有已有数据必须立即索引）。
+                \item 不要在导入数据时使用FULLTEXT。
+        \end{enumerate}
+\end{orangebox}      
+
+
+\subsection{进行全文本搜索}
+其中Match()指定被搜索的列，Against()指定要使用的搜索表达式。
+
+\begin{listing}[H]
+        \caption{进行全文本搜索的语句}
+	\label{code:fulltextselectclause}
+\begin{minted}{mysql}
+        SELECT description 
+        FROM film 
+        WHERE MATCH(description) AGAINST('Monastery')
+        ORDER BY description
+        LIMIT 10; 
+\end{minted}
+\end{listing}
+
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{进行全文本搜索的语句的结果}
+	\label{code:fulltextselectclauseresult}
+\begin{minted}{mysql}
++------------------------------------------------------------------------------------------------------+
+| description                                                                                          |
++------------------------------------------------------------------------------------------------------+
+| A Action-Packed Yarn of a Womanizer And a Lumberjack who must Chase a Sumo Wrestler in A Monastery   |
+| A Amazing Story of a Mad Cow And a Dog who must Kill a Husband in A Monastery                        |
+| A Astounding Character Study of a Composer And a Student who must Overcome a Composer in A Monastery |
+| A Astounding Character Study of a Womanizer And a Hunter who must Escape a Robot in A Monastery      |
+| A Astounding Documentary of a Butler And a Explorer who must Challenge a Butler in A Monastery       |
+| A Awe-Inspiring Story of a Feminist And a Cat who must Conquer a Dog in A Monastery                  |
+| A Beautiful Character Study of a Robot And a Astronaut who must Overcome a Boat in A Monastery       |
+| A Beautiful Documentary of a Astronaut And a Crocodile who must Discover a Madman in A Monastery     |
+| A Brilliant Panorama of a Mad Scientist And a Mad Cow who must Meet a Pioneer in A Monastery         |
+| A Fanciful Story of a Man And a Sumo Wrestler who must Outrace a Student in A Monastery              |
++------------------------------------------------------------------------------------------------------+
+10 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 18.2.1 MATCH注意事项}]
+        \begin{enumerate}
+                \item 使用完整的Match(),说明传递给Match()的值必须与FULLTEXT()定义中的相同。
+                \item 除非使用BINARY方式（本章中没有介绍），否则全文本搜索不区分大小写。
+                \item （使用LIKE）以不特别有用的顺序返回数据。前者（使用全文本搜索）返回以文本匹配的良好程度排序的数据。
+        \end{enumerate}
+\end{orangebox}  
+
+
+\begin{listing}[H]
+        \caption{进行全文本搜索排序的语句}
+	\label{code:fulltextselectorderclause}
+\begin{minted}{mysql}
+        SELECT description,
+               MATCH(description) AGAINST('Monastery') AS relevance_score
+        FROM film
+        LIMIT 5;
+\end{minted}
+\end{listing}
+
+输出的结果为(太长处理了一下，但大概意思是这样)：
+
+\begin{listing}[H]
+	\caption{进行全文本搜索排序的语句的结果}
+	\label{code:fulltextselectorderclauseresult}
+\begin{minted}{mysql}
+        +------------------------------------------+-----------------+
+        | description                              | relevance_score |
+        +------------------------------------------+-----------------+
+        | A Epic Drama of a Feminist And a Mad Scie|               0 |
+        | A Astounding Epistle of a Database Admini|               0 |
+        | A Astounding Reflection of a Lumberjack A|               0 |
+        |a Boy who must Redeem a Boy in A Monastery| 2.15655422210693|
+        +------------------------------------------+-----------------+
+        5 rows in set (0.00 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 18.2.2 计算出来的等级值}]
+        \begin{enumerate}
+                \item 不包含词的行等级为0（因此不被前一例子中的WHERE子句选择）。
+                \item 包含词的每行都有一个等级值，文本中词靠前的行的等级值比词靠后的行的等级值高。
+        \end{enumerate}
+\end{orangebox}  
+
+\subsection{使用查询扩展}
+
+采用之前的第一个例子：
+\begin{listing}[H]
+        \caption{使用查询扩展的语句}
+	\label{code:usesearchexpansionclause}
+\begin{minted}{mysql}
+        SELECT description 
+        FROM film 
+        WHERE MATCH(description) AGAINST('Monastery' WITH QUERY EXPANSION)
+        LIMIT 10; 
+\end{minted}
+\end{listing}
+
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用查询扩展的语句的结果}
+	\label{code:usesearchexpansionclauseresult}
+\begin{minted}{mysql}
+        +-----------------------------------------------------------------------+
+        | description                                                           |
+        +-----------------------------------------------------------------------+
+        | A Action-Packed Yarn of a Womanizer And a Lumberjack who must Chase a |
+        |Sumo Wrestler in A Monastery                                           |
+        | A Unbelieveable Character Study of a Cat And a Database Administrator |
+        |who must Pursue a Teacher in A Monastery                               |
+        | A Intrepid Reflection of a Technical Writer And a Hunter who must     |
+        |Defeat a Sumo Wrestler in A Monastery                                  |
+        | A Action-Packed Story of a Pioneer And a Technical Writer who must    |
+        |Discover a Forensic Psychologist in An Abandoned Amusement Park        |
+        | A Awe-Inspiring Drama of a Technical Writer And a Composer who must   |
+        |Reach a Pastry Chef in A U-Boat                                        |
+        | A Stunning Character Study of a Mad Scientist And a Mad Cow who must  | 
+        |Kill a Car in A Monastery                                              |
+        | A Awe-Inspiring Character Study of a Robot And a Sumo Wrestler who    |
+        |must Discover a Womanizer in A Shark Tank                              |
+        | A Awe-Inspiring Tale of a Forensic Psychologist And a Woman who must  |
+        |Challenge a Database Administrator in Ancient Japan                    |
+        | A Awe-Inspiring Reflection of a Pastry Chef And a Teacher who must    |
+        |Overcome a Sumo Wrestler in A U-Boat                                   |
+        | A Awe-Inspiring Documentary of a Robot And a Mad Scientist who must   |
+        |Reach a Database Administrator in A Shark Tank                         |
+        +-----------------------------------------------------------------------+
+        10 rows in set (0.01 sec)
+\end{minted}
+\end{listing}
+
+\subsection{布尔文本搜索}
+
+\begin{orangebox}[frametitle={Tips 18.4.1 布尔文本搜索可以提供的细节}]
+        \begin{enumerate}
+                \item 要匹配的词。
+                \item 要排斥的词（如果某行包含这个词，则不返回该行，即使它包含其他指定的词也是如此）。
+                \item 排列提示（指定某些词比其他词更重要，更重要的词等级更高）。
+                \item 表达式分组。
+                \item 另外一些内容。
+        \end{enumerate}
+\end{orangebox}  
+
+\begin{orangebox}[frametitle={Tips 18.4.2 没有FULLTEXT索引也可以使用}]
+        布尔方式不同于迄今为止使用的全文本搜索语法的地方在于，即使没有定义FULLTEXT索引，也可以使用它。
+\end{orangebox} 
+        
+\begin{listing}[H]
+        \caption{使用布尔文本搜索的语句}
+	\label{code:usebooleanmodeclause}
+\begin{minted}{mysql}
+        SELECT title FROM film WHERE MATCH(title) AGAINST('VIRGIN' IN BOOLEAN MODE);
+\end{minted}
+\end{listing}
+
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用布尔文本搜索的语句的结果}
+	\label{code:usebooleanmodeclauseresult}
+\begin{minted}{mysql}
+        +--------------+
+        | title        |
+        +--------------+
+        | SEA VIRGIN   |
+        | VIRGIN DAISY |
+        +--------------+
+        2 rows in set (0.01 sec)
+\end{minted}
+\end{listing}
+
+\begin{table}[H]
+        \caption{\textbf{全文本布尔操作符}}%标题
+        \centering%把表居中
+        \begin{tabular}{ll}%四个c代表该表一共四列，内容全部居中
+        \toprule%第一道横线
+        布尔操作符&说明\\
+        \midrule%第二道横线 
+        + & 包含，词必须存在 \\
+        - & 排除，词必须不出现 \\
+        > & 包含，而且增加等级值 \\
+        < & 包含，且减少等级值 \\
+        () & 把词组成子表达式（允许这些子表达式作为一个组被包含、排除、排列等） \\
+        ~ & 取消一个词的排序值 \\
+        * & 词尾的通配符 \\
+        "" & 定义一个短语（与单个词的列表不一样，它匹配整个短语以便包含或排除这个短语） \\
+        \bottomrule%第三道横线
+        \end{tabular}
+\end{table} 
+下面举个例子，我把上面那个例子要求不检索DAISY： 
+
+
+        
+\begin{listing}[H]
+        \caption{使用复杂布尔文本搜索的语句}
+	\label{code:usedifficultbooleanmodeclause}
+\begin{minted}{mysql}
+        SELECT title FROM film WHERE MATCH(title) AGAINST('VIRGIN -DAISY' IN BOOLEAN MODE);
+\end{minted}
+\end{listing}
+
+
+输出的结果为：
+
+\begin{listing}[H]
+	\caption{使用复杂布尔文本搜索的语句的结果}
+	\label{code:usedifficultbooleanmodeclauseresult}
+\begin{minted}{mysql}
+        +------------+
+        | title      |
+        +------------+
+        | SEA VIRGIN |
+        +------------+
+        1 row in set (0.01 sec)
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 18.4.3 排列而不排序}]
+        布尔方式中，不按等级值降序排序返回的行。
+\end{orangebox} 
+
+\begin{orangebox}[frametitle={Tips 18.4.4 全文本搜索的使用说明}]
+        \begin{enumerate}
+                \item 在索引全文本数据时，短词被忽略且从索引中排除。短词定义为那些具有3个或3个以下字符的词（如果需要，这个数目可以更改）。
+                \item MySQL带有一个内建的非用词（stopword）列表，这些词在索引全文本数据时总是被忽略。
+                \item MySQL规定了一条50\%规则，如果一个词出现在50\%以上的行中，则将它作为一个非用词忽略。
+                \item 如果表中的行数少于3行，则全文本搜索不返回结果（因为每个词或者不出现，或者至少出现在50\%的行中）。
+                \item 忽略词中的单引号。
+                \item 不具有词分隔符（包括日语和汉语）的语言不能恰当地返回全文本搜索结果。
+        \end{enumerate}
+\end{orangebox}  
+
+\section{插入数据}
+\subsection{插入完整的行}
+
+例如：
+
+\begin{listing}[H]
+        \caption{插入完整的行的语句}
+	\label{code:insertrowclause}
+\begin{minted}{mysql}
+        INSERT INTO customer 
+        VALUES (NULL, 1, 'RED', 'BAMBOO', 'chenqw0409@163.com', 77, 1, NOW(), NOW());
+\end{minted}
+\end{listing}
+
+这个语句可以换用一种更加安全的方式：
+
+\begin{listing}[H]
+        \caption{更安全的插入完整的行的语句}
+	\label{code:moresafeinsertrowclause}
+\begin{minted}{mysql}
+        INSERT INTO customer (customer_id,
+                              store_id,
+                              first_name,
+                              last_name,
+                              email,
+                              address_id,
+                              active,
+                              create_date,
+                              last_update)
+        VALUES (NULL,
+                2,
+                'CHEN',
+                'QIWEI',
+                'chenqw0621@edu.jlu.com', 
+                177,
+                1,
+                NOW(),
+                NOW());
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 19.1.1 插入列的注意事项}]
+        \begin{enumerate}
+                \item 总是使用列的列表 ，使用列的列表能使SQL代码继续发挥作用，即使表结构发生了变化。
+                \item 不管使用哪种INSERT语法，都必须给出VALUES的正确数目。
+                \item 果表的定义允许，则可以在INSERT操作中省略某些列。（字段运行空值或表定义给出默认值）
+                \item 如果数据检索是最重要的，则可以通过在INSERT和INTO之间添加关键字LOW\_PRIORITY，指示MySQL降低INSERT语句的优先级。
+        \end{enumerate}
+\end{orangebox}
+
+\subsection{插入多个行}
+
+可以直接采用以下例子：
+
+\begin{listing}[H]
+        \caption{插入多个行的语句}
+	\label{code:insertmultirowclause}
+\begin{minted}{mysql}
+        INSERT INTO customer (customer_id,
+                              store_id,
+                              first_name,
+                              last_name,
+                              email,
+                              address_id,
+                              active,
+                              create_date,
+                              last_update)
+        VALUES (NULL,
+                2,
+                'BLUE',
+                'BAMBOO',
+                'chenqw0621@edu.jlu.com', 
+                277,
+                2,
+                NOW(),
+                NOW()
+                ),
+                (NULL,
+                2,
+                'YELLOW',
+                'BAMBOO',
+                'chenqw0621@edu.jlu.com', 
+                277,
+                2,
+                NOW(),
+                NOW()
+                );
+\end{minted}
+\end{listing}
+
+\subsection{插入检索出的数据}
+
+可以将另一个表中检索出来的数据插入进当前表：
+
+\begin{listing}[H]
+        \caption{插入检索出数据的语句}
+	\label{code:insertselectrowclause}
+\begin{minted}{mysql}
+        INSERT INTO customer_copy1 (customer_id,
+                                   store_id,
+                                   first_name,
+                                   last_name,
+                                   email,
+                                   address_id,
+                                   active,
+                                   create_date,
+                                   last_update)
+        SELECT customer_id,
+               store_id,
+               first_name,
+               last_name,
+               email,
+               address_id,
+               active,
+               create_date,
+               last_update
+        FROM customer;
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 19.3.1 INSERT SELECT中的列名在插入中的作用}]
+        MySQL不关心SELECT返回的列名。它使用的是列的位置，因此SELECT中的第一列（不管其列名）将用来填充表列中指定的第一个列，这对于从使用不同列名的表中导入数据是非常有用的。
+\end{orangebox} 
+
+\section{更新和删除数据}
+\subsection{更新数据}
+
+UPDATE既可以更新表中特定行，也可以更新表中所有行，要注意WHERE子句。
+
+例如，现在我要把first\_name为BLUE的客户的邮箱更新了，可以参考以下语句：
+
+\begin{listing}[H]
+        \caption{更新记录的语句}
+	\label{code:updaterowclause}
+\begin{minted}{mysql}
+        UPDATE customer
+        SET email = 'chen1172305218@gmail.com'
+        WHERE customer_id = 603;
+\end{minted}
+\end{listing}
+
+下面演示更新多个列：
+\begin{listing}[H]
+        \caption{更新多个记录的语句}
+	\label{code:updatemultirowclause}
+\begin{minted}{mysql}
+        UPDATE customer
+        SET email = 'cqw1172305218@163.com',
+            first_name = 'GREEN'
+        WHERE customer_id = 604;
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 20.1.1 UPDATE的注意事项}]
+        \begin{enumerate}
+                \item UPDATE语句中可以使用子查询，使得能用SELECT语句检索出的数据更新列数据。
+                \item 如果用UPDATE语句更新多行，并且在更新这些行中的一行或多行时出一个现错误，则整个UPDATE操作被取消（错误发生前更新的所有行被恢复到它们原来的值）。为即使是发生错误，也继续进行更新，可使用IGNORE关键字。（UPDATE IGNORE customers）
+        \end{enumerate}
+\end{orangebox}
+
+
+删除某个列的值可以把他设为NULL:
+\begin{listing}[H]
+        \caption{UPDATE删除值的语句}
+	\label{code:updatedeleteclause}
+\begin{minted}{mysql}
+        UPDATE customer
+        SET email = 'NULL'
+        WHERE customer_id = 604;
+\end{minted}
+\end{listing}
+
+\subsection{删除数据}
+
+DELETE不仅可以从表中删除特定的行，也可以从表中删除所有行，例如：
+
+\begin{listing}[H]
+        \caption{删除一行的语句}
+	\label{code:deleterowclause}
+\begin{minted}{mysql}
+        DELETE FROM customer
+        WHERE customer_id = 604;
+\end{minted}
+\end{listing}
+
+\begin{orangebox}[frametitle={Tips 20.2.1 DELETE的注意事项}]
+        \begin{enumerate}
+                \item DELETE语句从表中删除行，但是DELETE不删除表本身。
+                \item 如果想从表中删除所有行，不要使用DELETE，可使用TRUNCATE TABLE语句。
+                \item MySQL没有撤销（undo）按钮。应该非常小心地使用UPDATE和DELETE。
+        \end{enumerate}
+\end{orangebox}
+\end{document}

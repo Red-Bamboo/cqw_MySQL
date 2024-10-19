@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{customer}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{customer\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{store\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{first\PYGZus{}name}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{last\PYGZus{}name}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{email}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{address\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{k}{active}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{create\PYGZus{}date}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{last\PYGZus{}update}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{VALUES}\PYG{+w}{ }\PYG{p}{(}\PYG{n+no}{NULL}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+s+s1}{\PYGZsq{}BLUE\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+s+s1}{\PYGZsq{}BAMBOO\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+s+s1}{\PYGZsq{}chenqw0621@edu.jlu.com\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+m+mi}{277}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n+nf}{NOW}\PYG{p}{(),}
+\PYG{+w}{                }\PYG{n+nf}{NOW}\PYG{p}{()}
+\PYG{+w}{                }\PYG{p}{),}
+\PYG{+w}{                }\PYG{p}{(}\PYG{n+no}{NULL}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+s+s1}{\PYGZsq{}YELLOW\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+s+s1}{\PYGZsq{}BAMBOO\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+s+s1}{\PYGZsq{}chenqw0621@edu.jlu.com\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+m+mi}{277}\PYG{p}{,}
+\PYG{+w}{                }\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n+nf}{NOW}\PYG{p}{(),}
+\PYG{+w}{                }\PYG{n+nf}{NOW}\PYG{p}{()}
+\PYG{+w}{                }\PYG{p}{);}
+\end{Verbatim}

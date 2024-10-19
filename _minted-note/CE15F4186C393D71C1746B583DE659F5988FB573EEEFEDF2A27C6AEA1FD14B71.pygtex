@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{last\PYGZus{}name}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{CATHERINE}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{CAMPBELL}\PYG{+w}{  }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{KATHERINE}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{RIVERA}\PYG{+w}{    }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{VALERIE}\PYG{+w}{    }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{BLACK}\PYG{+w}{     }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ERIN}\PYG{+w}{       }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{DUNN}\PYG{+w}{      }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ERICA}\PYG{+w}{      }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{MATTHEWS}\PYG{+w}{  }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ERIKA}\PYG{+w}{      }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{PENA}\PYG{+w}{      }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ERIC}\PYG{+w}{       }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ROBERT}\PYG{+w}{    }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{FREDERICK}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ISBELL}\PYG{+w}{    }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ERIK}\PYG{+w}{       }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{GUILLEN}\PYG{+w}{   }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{l+m+mi}{9}\PYG{+w}{ }\PYG{k}{rows}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{k+kt}{set}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.00}\PYG{+w}{ }\PYG{n}{sec}\PYG{p}{)}
+\end{Verbatim}

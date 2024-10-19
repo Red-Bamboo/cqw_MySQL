@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{film\PYGZus{}id}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{num\PYGZus{}inevntory}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{993}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{895}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{892}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{891}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{890}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{790}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{698}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{590}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{397}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{391}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{             }\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{l+m+mi}{10}\PYG{+w}{ }\PYG{k}{rows}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{k+kt}{set}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.00}\PYG{+w}{ }\PYG{n}{sec}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{language}\PYG{p}{.}\PYG{k}{name}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{k}{language}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{language}\PYG{p}{.}\PYG{k}{name}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{sakila}\PYG{p}{.}\PYG{k}{language}\PYG{p}{;}
+\end{Verbatim}

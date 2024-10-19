@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{last\PYGZus{}name}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{store\PYGZus{}id}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ABNEY}\PYG{+w}{     }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{RAFAEL}\PYG{+w}{     }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ADAM}\PYG{+w}{      }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{NATHANIEL}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ADAMS}\PYG{+w}{     }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{KATHLEEN}\PYG{+w}{   }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ALEXANDER}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{DIANA}\PYG{+w}{      }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ALLARD}\PYG{+w}{    }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{GORDON}\PYG{+w}{     }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ALLEN}\PYG{+w}{     }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{SHIRLEY}\PYG{+w}{    }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ALVAREZ}\PYG{+w}{   }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{CHARLENE}\PYG{+w}{   }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ANDERSON}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{LISA}\PYG{+w}{       }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ANDREW}\PYG{+w}{    }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{JOSE}\PYG{+w}{       }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{ANDREWS}\PYG{+w}{   }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{IDA}\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{l+m+mi}{10}\PYG{+w}{ }\PYG{k}{rows}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{k+kt}{set}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.00}\PYG{+w}{ }\PYG{n}{sec}\PYG{p}{)}
+\end{Verbatim}

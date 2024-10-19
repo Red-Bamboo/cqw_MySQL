@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{city}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{city}\PYG{+w}{ }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{city\PYGZus{}id}\PYG{+w}{ }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{title}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{film}\PYG{+w}{ }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{k}{MATCH}\PYG{p}{(}\PYG{n}{title}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AGAINST}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}VIRGIN\PYGZsq{}}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{k+kt}{BOOLEAN}\PYG{+w}{ }\PYG{k}{MODE}\PYG{p}{);}
+\end{Verbatim}

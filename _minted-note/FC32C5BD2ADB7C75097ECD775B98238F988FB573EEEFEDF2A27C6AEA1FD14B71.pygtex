@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{FID}\PYG{p}{,}\PYG{n}{title}\PYG{p}{,}\PYG{n}{rating}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{film\PYGZus{}list}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{rating}\PYG{+w}{ }\PYG{k}{REGEXP}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}PG*\PYGZsq{}}
+\PYG{+w}{        }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\end{Verbatim}

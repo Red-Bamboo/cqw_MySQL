@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{address}\PYG{p}{,}\PYG{n}{last\PYGZus{}update}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{address}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{k}{Minute}\PYG{p}{(}\PYG{n}{last\PYGZus{}update}\PYG{p}{)}\PYG{o}{=}\PYG{l+m+mi}{30}
+\PYG{+w}{        }\PYG{k}{AND}\PYG{+w}{ }\PYG{k}{Second}\PYG{p}{(}\PYG{n}{last\PYGZus{}update}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{BETWEEN}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{k}{AND}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
+\end{Verbatim}

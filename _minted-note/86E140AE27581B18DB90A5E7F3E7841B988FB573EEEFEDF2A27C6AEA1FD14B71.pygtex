@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{description}\PYG{p}{,}
+\PYG{+w}{               }\PYG{k}{MATCH}\PYG{p}{(}\PYG{k}{description}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AGAINST}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Monastery\PYGZsq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{relevance\PYGZus{}score}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{film}
+\PYG{+w}{        }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}
+\end{Verbatim}

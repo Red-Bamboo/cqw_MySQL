@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{         }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{amount}\PYG{p}{,}\PYG{n}{customer\PYGZus{}id}\PYG{p}{,}\PYG{n}{staff\PYGZus{}id}
+\PYG{+w}{         }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{payment}
+\PYG{+w}{         }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{amount}\PYG{+w}{ }\PYG{k}{BETWEEN}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{+w}{ }\PYG{k}{AND}\PYG{+w}{ }\PYG{l+m+mi}{11}
+\PYG{+w}{         }\PYG{k}{AND}\PYG{+w}{ }\PYG{n}{staff\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{+w}{         }\PYG{k}{AND}\PYG{+w}{ }\PYG{n}{customer\PYGZus{}id}\PYG{+w}{ }\PYG{k}{BETWEEN}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{k}{AND}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{p}{;}
+\end{Verbatim}

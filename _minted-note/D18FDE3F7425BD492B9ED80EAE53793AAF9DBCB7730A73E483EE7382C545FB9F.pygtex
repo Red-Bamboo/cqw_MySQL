@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{process\PYGZus{}dweet}\PYG{p}{(}\PYG{n}{dweet}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Inspect the dweet and set LED state accordingly\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{global} \PYG{n}{last\PYGZus{}led\PYGZus{}state}
+
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{l+s+s1}{\PYGZsq{}state\PYGZsq{}} \PYG{o+ow}{in} \PYG{n}{dweet}\PYG{p}{:}
+        \PYG{k}{return}
+    \PYG{n}{led\PYGZus{}state} \PYG{o}{=} \PYG{n}{dweet}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}state\PYGZsq{}}\PYG{p}{]}
+    \PYG{k}{if} \PYG{n}{led\PYGZus{}state} \PYG{o}{==} \PYG{n}{last\PYGZus{}led\PYGZus{}state}\PYG{p}{:}
+        \PYG{k}{return}  \PYG{c+c1}{\PYGZsh{} LED is already in requested state.}
+
+    \PYG{k}{if} \PYG{n}{led\PYGZus{}state} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}on\PYGZsq{}}\PYG{p}{:}
+        \PYG{n}{led}\PYG{o}{.}\PYG{n}{on}\PYG{p}{()}
+    \PYG{k}{elif} \PYG{n}{led\PYGZus{}state} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}blink\PYGZsq{}}\PYG{p}{:}
+        \PYG{n}{led}\PYG{o}{.}\PYG{n}{blink}\PYG{p}{()}
+    \PYG{k}{else}\PYG{p}{:}  \PYG{c+c1}{\PYGZsh{} Off, including any unhandled state.}
+        \PYG{n}{led\PYGZus{}state} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}off\PYGZsq{}}
+        \PYG{n}{led}\PYG{o}{.}\PYG{n}{off}\PYG{p}{()}
+
+    \PYG{k}{if} \PYG{n}{led\PYGZus{}state} \PYG{o}{!=} \PYG{n}{last\PYGZus{}led\PYGZus{}state}\PYG{p}{:}
+        \PYG{n}{last\PYGZus{}led\PYGZus{}state} \PYG{o}{=} \PYG{n}{led\PYGZus{}state}
+        \PYG{n}{logger}\PYG{o}{.}\PYG{n}{info}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}LED \PYGZsq{}} \PYG{o}{+} \PYG{n}{led\PYGZus{}state}\PYG{p}{)}
+\end{Verbatim}

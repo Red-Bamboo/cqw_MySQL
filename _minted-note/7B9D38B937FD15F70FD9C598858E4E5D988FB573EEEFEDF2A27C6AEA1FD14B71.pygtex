@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{k}{name}\PYG{p}{,}\PYG{n+nf}{COUNT}\PYG{p}{(}\PYG{n}{f}\PYG{p}{.}\PYG{n}{film\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{num\PYGZus{}film}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{k}{language}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{l}\PYG{+w}{ }\PYG{k}{LEFT}\PYG{+w}{ }\PYG{k}{OUTER}\PYG{+w}{  }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{film}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{f}
+\PYG{+w}{        }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{language\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{.}\PYG{n}{language\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{language\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{.}\PYG{n}{language\PYGZus{}id}\PYG{p}{;}
+\end{Verbatim}

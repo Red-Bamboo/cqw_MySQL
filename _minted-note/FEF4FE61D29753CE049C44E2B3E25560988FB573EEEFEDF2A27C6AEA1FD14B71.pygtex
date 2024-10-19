@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{staff\PYGZus{}id}\PYG{p}{,}\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{n}{last\PYGZus{}name}\PYG{p}{,(}\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n+nf}{COUNT}\PYG{p}{(}\PYG{n}{amount}\PYG{p}{)}
+\PYG{+w}{                                              }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{payment}
+\PYG{+w}{                                              }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{staff\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{staff\PYGZus{}id}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}payment}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{staff}
+\PYG{+w}{        }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{staff\PYGZus{}id}\PYG{p}{;}
+\end{Verbatim}

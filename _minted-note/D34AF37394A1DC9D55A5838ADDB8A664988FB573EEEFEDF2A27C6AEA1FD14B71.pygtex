@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{amount}\PYG{p}{,}\PYG{n}{rental\PYGZus{}id}\PYG{p}{,}\PYG{n}{staff\PYGZus{}id}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{payment}\PYG{+w}{ }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{amount}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{,}\PYG{n}{rental\PYGZus{}id}\PYG{+w}{ }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\end{Verbatim}

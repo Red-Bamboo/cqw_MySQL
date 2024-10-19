@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{film\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{rental\PYGZus{}duration}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{replacement\PYGZus{}cost}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n}{rental\PYGZus{}duration}\PYG{o}{*}\PYG{n}{replacement\PYGZus{}cost}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{payment}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{film}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{film\PYGZus{}id}\PYG{o}{=}\PYG{l+m+mi}{7}\PYG{p}{;}
+\end{Verbatim}

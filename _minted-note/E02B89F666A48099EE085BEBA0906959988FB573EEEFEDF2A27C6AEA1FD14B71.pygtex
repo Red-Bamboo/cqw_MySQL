@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{s}\PYG{p}{.}\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{n}{s}\PYG{p}{.}\PYG{n}{last\PYGZus{}name}\PYG{p}{,}\PYG{n}{a}\PYG{p}{.}\PYG{n}{address}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{staff}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{s}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{address}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{a}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{s}\PYG{p}{.}\PYG{n}{address\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{address\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{s}\PYG{p}{.}\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{n}{s}\PYG{p}{.}\PYG{n}{last\PYGZus{}name}\PYG{p}{;}
+\end{Verbatim}

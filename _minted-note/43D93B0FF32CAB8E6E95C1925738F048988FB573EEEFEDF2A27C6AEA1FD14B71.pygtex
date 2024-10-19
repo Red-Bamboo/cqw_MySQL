@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{productnotes}
+\PYG{+w}{        }\PYG{p}{(}
+\PYG{+w}{                }\PYG{n}{note\PYGZus{}id}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{                             }\PYG{k}{NOT}\PYG{+w}{ }\PYG{n+no}{NULL}\PYG{+w}{ }\PYG{n}{AUTO}\PYG{+w}{ }\PYG{n}{INCREMENT}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{prod\PYGZus{}id}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{+w}{                        }\PYG{k}{NOT}\PYG{+w}{ }\PYG{n+no}{NULL}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{note\PYGZus{}date}\PYG{+w}{ }\PYG{k+kt}{datetime}\PYG{+w}{                      }\PYG{k}{NOT}\PYG{+w}{ }\PYG{n+no}{NULL}\PYG{p}{,}
+\PYG{+w}{                }\PYG{n}{note\PYGZus{}text}\PYG{+w}{ }\PYG{k+kt}{text}\PYG{+w}{                          }\PYG{n+no}{NULL}\PYG{p}{,}
+\PYG{+w}{                }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{(}\PYG{n}{note\PYGZus{}id}\PYG{p}{),}
+\PYG{+w}{                }\PYG{k}{FULLTEXT}\PYG{p}{(}\PYG{n}{note\PYGZus{}text}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{)}\PYG{k}{ENGINE}\PYG{o}{=}\PYG{n}{MYISAM}\PYG{o}{:}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{n}{Welcome}\PYG{+w}{ }\PYG{k}{to}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{MySQL}\PYG{+w}{ }\PYG{n}{monitor}\PYG{p}{.}\PYG{+w}{  }\PYG{n}{Commands}\PYG{+w}{ }\PYG{k}{end}\PYG{+w}{ }\PYG{k}{with}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{k}{or}\PYG{+w}{ }\PYG{err}{\PYGZbs{}}\PYG{k}{g}\PYG{p}{.}
+\PYG{+w}{        }\PYG{n}{Your}\PYG{+w}{ }\PYG{n}{MySQL}\PYG{+w}{ }\PYG{k}{connection}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{l+m+mi}{38}
+\PYG{+w}{        }\PYG{n}{Server}\PYG{+w}{ }\PYG{k}{version}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{.}\PYG{l+m+mi}{0}\PYG{p}{.}\PYG{l+m+mi}{39}\PYG{+w}{ }\PYG{n}{MySQL}\PYG{+w}{ }\PYG{n}{Community}\PYG{+w}{ }\PYG{n}{Server}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{GPL}
+\PYG{+w}{        }\PYG{k}{Type}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}help;\PYGZsq{}}\PYG{+w}{ }\PYG{k}{or}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}h\PYGZsq{}}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{help}\PYG{p}{.}\PYG{+w}{ }\PYG{k}{Type}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}c\PYGZsq{}}\PYG{+w}{ }\PYG{k}{to}\PYG{+w}{ }\PYG{n}{clear}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{k}{current}\PYG{+w}{ }\PYG{k}{input}\PYG{+w}{ }\PYG{k}{statement}\PYG{p}{.}
+\end{Verbatim}

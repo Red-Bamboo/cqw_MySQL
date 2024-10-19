@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n+nf}{Concat}\PYG{p}{(}\PYG{n+nf}{RTrim}\PYG{p}{(}\PYG{n}{first\PYGZus{}name}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{p}{,}\PYG{n+nf}{RTrim}\PYG{p}{(}\PYG{n}{last\PYGZus{}name}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}(\PYGZsq{}}\PYG{p}{,}\PYG{n+nf}{RTrim}\PYG{p}{(}\PYG{n}{email}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{})\PYGZsq{}}\PYG{p}{)}\PYG{+w}{  }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{contact}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{customer}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{k}{LIKE}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}ERI\PYGZus{}\PYGZsq{}}
+\PYG{+w}{        }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{k}{DESC}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{store\PYGZus{}id}\PYG{p}{,}\PYG{n+nf}{COUNT}\PYG{p}{(}\PYG{n}{inventory\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{num\PYGZus{}inevntory}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{inventory}
+\PYG{+w}{        }\PYG{k}{GROUP}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{store\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{WITH}\PYG{+w}{ }\PYG{k}{ROLLUP}\PYG{p}{;}
+\end{Verbatim}

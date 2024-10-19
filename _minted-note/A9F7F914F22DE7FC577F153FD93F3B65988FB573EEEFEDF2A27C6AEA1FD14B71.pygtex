@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{UPDATE}\PYG{+w}{ }\PYG{n}{customer}
+\PYG{+w}{        }\PYG{k}{SET}\PYG{+w}{ }\PYG{n}{email}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}chen1172305218@gmail.com\PYGZsq{}}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{customer\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{603}\PYG{p}{;}
+\end{Verbatim}

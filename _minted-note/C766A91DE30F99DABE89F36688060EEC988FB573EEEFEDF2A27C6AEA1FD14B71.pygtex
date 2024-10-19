@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{film\PYGZus{}actor}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{actor\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{+w}{        }\PYG{k}{AND}\PYG{+w}{ }\PYG{n}{film\PYGZus{}id}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{166}\PYG{p}{,}\PYG{l+m+mi}{277}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\end{Verbatim}

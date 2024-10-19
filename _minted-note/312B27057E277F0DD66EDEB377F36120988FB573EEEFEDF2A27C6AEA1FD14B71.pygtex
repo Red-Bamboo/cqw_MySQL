@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{title}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{name}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{film\PYGZus{}category}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{film}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{category}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{c}
+\PYG{+w}{        }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{film\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{.}\PYG{n}{film\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{AND}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{category\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{.}\PYG{n}{category\PYGZus{}id}
+\PYG{+w}{        }\PYG{k}{AND}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{film\PYGZus{}id}\PYG{+w}{ }\PYG{k}{REGEXP}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZca{}[1\PYGZhy{}9]7\PYGZdl{}\PYGZsq{}}
+\PYG{+w}{        }\PYG{k}{ORDER}\PYG{+w}{ }\PYG{k}{BY}\PYG{+w}{ }\PYG{n}{title}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{name}\PYG{p}{;}
+
+\end{Verbatim}

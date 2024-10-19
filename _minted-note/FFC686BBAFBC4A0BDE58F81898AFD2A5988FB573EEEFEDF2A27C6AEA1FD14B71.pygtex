@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{k}{name}\PYG{+w}{     }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{num\PYGZus{}film}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{English}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{     }\PYG{l+m+mi}{1000}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{Italian}\PYG{+w}{  }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{Japanese}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{Mandarin}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{French}\PYG{+w}{   }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{German}\PYG{+w}{   }\PYG{o}{|}\PYG{+w}{        }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{+w}{        }\PYG{l+m+mi}{6}\PYG{+w}{ }\PYG{k}{rows}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{k+kt}{set}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.00}\PYG{+w}{ }\PYG{n}{sec}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{AVG}\PYG{p}{(}\PYG{n}{amount}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{avg\PYGZus{}amount}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n+nf}{COUNT}\PYG{p}{(}\PYG{n}{amount}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{count\PYGZus{}amount}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n+nf}{MAX}\PYG{p}{(}\PYG{n}{amount}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{max\PYGZus{}amount}\PYG{p}{,}
+\PYG{+w}{               }\PYG{n+nf}{MIN}\PYG{p}{(}\PYG{n}{amount}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{AS}\PYG{+w}{ }\PYG{n}{min\PYGZus{}amount}
+\PYG{+w}{        }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{payment}\PYG{p}{;}
+\end{Verbatim}

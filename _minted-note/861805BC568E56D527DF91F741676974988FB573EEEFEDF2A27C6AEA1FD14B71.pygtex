@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{         }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{rental\PYGZus{}date}\PYG{p}{,}\PYG{n}{return\PYGZus{}date}\PYG{p}{,}\PYG{n}{staff\PYGZus{}id}
+\PYG{+w}{         }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{rental}
+\PYG{+w}{         }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{return\PYGZus{}date}\PYG{+w}{ }\PYG{k}{IS}\PYG{+w}{ }\PYG{n+no}{NULL}
+\PYG{+w}{         }\PYG{k}{LIMIT}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}
+\end{Verbatim}
